@@ -1,0 +1,114 @@
+* {
+	padding: 0;
+    margin: 0;
+    font-family: Calibri;
+}
+@media (orientation : portrait), (max-width : 800px) {
+    h1 {
+        /* color : lightblue; */
+    }
+}
+@font-face {
+    font-family: Abel;
+    src: url('Abel-Regular.ttf');
+}
+@font-face {
+    font-family: Titillium;
+    src: url('TitilliumWeb-Regular.ttf');
+}
+html {
+    background-color: #444444;
+    color: #222222;
+    text-align: center;
+}
+#background {
+    background: url('background7.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    position: fixed;
+    width: 100%;
+    filter: blur(.5px) brightness(85%);
+    z-index: -1;
+    transition-duration: 1s;
+}
+#header-container * {
+    white-space: nowrap;
+}
+header {
+    color: #FFFFFF;
+    text-shadow: 1px 1px black;
+}
+.Titillium {
+    font-family: Titillium;
+    color: #FFFFFF;
+    text-shadow: 1px 1px black;
+}
+h1 {
+    font-size: 3em;
+}
+h2 {
+    font-size: 2em;
+    margin-bottom: 6px;
+}
+a {
+    text-decoration: none;
+}
+p {
+    margin: 1em 0px;
+}
+.w3-display-middle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+}
+.section {
+    padding: 4% 10%;
+}
+.section:nth-child(even) {
+    background-color: #EEEEEECC;
+}
+.section:nth-child(odd) {
+    background-color: #FFFFFFCC;
+}
+.skill {
+    height: 140px;
+    width: 140px;
+    display: inline-block;
+    margin: 20px;
+    padding: 20px;
+    font-size: 1.5em;
+    outline: #FFFFFF;
+    transition-duration: .5s;
+}
+.skill:hover {
+    background-color: #FFFFFF44;
+    outline: 1px solid #FFFFFF;
+    transition-duration: .5s;
+}
+div img {
+    height: 100px;
+    width: 100px;
+    display: block;
+    margin: auto auto;
+}
+.linkedin, .github {
+    height: 100px;
+    width: 100px;
+    display: inline-block;
+    line-height: 100px;
+    color: #FFFFFF;
+    font-size: 3em;
+}
+.linkedin {
+    background-color: #007bb5;
+}
+.github {
+    background-color:#24292e;
+}
+ul li {
+    list-style: none;
+}
