@@ -20,6 +20,7 @@ html {
     background-color: #444444;
     color: #222222;
     text-align: center;
+    scroll-behavior: smooth;
 }
 #background {
     background: url('background7.png');
@@ -29,21 +30,59 @@ html {
     background-attachment: fixed;
     position: fixed;
     width: 100%;
-    filter: blur(.5px) brightness(85%);
+    filter: blur(.5px) brightness(85%) saturate(60%);
     z-index: -1;
     transition-duration: 1s;
 }
+#background.blur {
+    filter: blur(10px) brightness(85%) saturate(40%);
+}
+nav {
+    position: fixed;
+    left: -245px;
+    top: 0px;
+    height: 100%;
+    width: auto;
+    transition-duration: .5s;
+}
+nav.is-active {
+    background-color: #fff9;
+    left: 0px;
+}
+#hamburger-container {
+    text-align: right;
+}
+.blackhamburger {
+    background-color: #0008;
+}
+nav button:focus {
+    outline: unset;
+}
+nav li {
+    font-size: 2em;
+    color: #222;
+    cursor: default;
+    padding: 0px 70px;
+    transition-duration: .5s;
+}
+nav.is-active li:hover {
+    background-color: #fff8;
+}
 #header-container * {
     white-space: nowrap;
+    color: #fff;
 }
-header {
-    color: #FFFFFF;
-    text-shadow: 1px 1px black;
+#arrow-container {
+    margin: auto;
+    transition-duration: .5s;
+}
+.arrow {
+    height: 100px;
+    width: 100px;
+    background-color: blue;
 }
 .Titillium {
     font-family: Titillium;
-    color: #FFFFFF;
-    text-shadow: 1px 1px black;
 }
 h1 {
     font-size: 3em;
@@ -74,17 +113,25 @@ p {
 .section:nth-child(odd) {
     background-color: #FFFFFFCC;
 }
-.skill {
-    height: 140px;
-    width: 140px;
+.icon {
     display: inline-block;
     margin: 20px;
     padding: 20px;
     font-size: 1.5em;
+    color: #000000;
     outline: #FFFFFF;
     transition-duration: .5s;
+    vertical-align: top;
 }
-.skill:hover {
+.icon-small {
+    height: 30px;
+    width: 30px;
+}
+.icon-large {
+    height: 140px;
+    width: 140px;
+}
+.icon:hover {
     background-color: #FFFFFF44;
     outline: 1px solid #FFFFFF;
     transition-duration: .5s;
@@ -95,7 +142,7 @@ div img {
     display: block;
     margin: auto auto;
 }
-.linkedin, .github {
+.linksicons {
     height: 100px;
     width: 100px;
     display: inline-block;
@@ -111,4 +158,20 @@ div img {
 }
 ul li {
     list-style: none;
+}
+.scroll-indicator {	
+    position: relative;
+	-webkit-animation: bounce 2s infinite; 
+	animation: bounce 2s infinite;
+}
+@-webkit-keyframes bounce {
+	 0% { top: 20px; }
+	 50%   { top: 40px; }
+	 100% { top: 20px; }
+}
+
+@keyframes bounce {
+	 0% { top: 20px; }
+	 50%   { top: 40px; }
+	 100% { top: 20px; }
 }

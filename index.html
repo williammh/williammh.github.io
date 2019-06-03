@@ -10,6 +10,7 @@
     <!-- <link href="style.css" rel="stylesheet" type="text/css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="stylesheet.css" rel="stylesheet" type="text/css">
+    <link href="hamburger.css" rel="stylesheet" type="text/css">
     <script src="script.js"></script>
 </head>
 <body>
@@ -18,22 +19,51 @@
         <header class="w3-display-middle">
             <h1 class="Titillium">William Huynh</h1>
             <h2 class="Titillium">Front-End Engineer</h2>
+            <a href="mailto:whuynh23@gmail.com" target="_blank">
+                <i class="material-icons icon icon-small email">mail_outline</i>
+            </a>
+            <a href="https://www.linkedin.com/in/williammhuynh/" target="_blank">
+                <div class="fa fa-linkedin icon icon-small"></div>
+            </a>
+            <a href="https://github.com/williammh" target="_blank">
+                <div class="fa fa-github icon icon-small"></div>
+            </a>
+            <div id="arrow-container">
+                <i class="material-icons scroll-indicator">arrow_downward</i>
+            </div>
         </header>
+        
     </div>
-    <div class="section">
+    <nav>
+        <div id="hamburger-container">
+            <button class="hamburger hamburger--spin" type="button">
+                <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                </span>
+            </button>
+        </div>
+        <ul>
+            <li id="navTop" class="Titillium">Top</li>
+            <li id="navTechnologies" class="Titillium">Technologies</li>
+            <li id="navSkills" class="Titillium">Skills</li>
+            <li id="navAbout" class="Titillium">About</li>
+            <li id="navLinks" class="Titillium">Links</li>
+        </ul>
+    </nav>
+    <div id="technologies" class="section">
         <h2 class="Titillium">Technologies</h2>
-        <div class="skill Titillium"><img src="html5-logo.png">HTML</div>
-        <div class="skill Titillium"><img src="css3-logo.png">CSS</div>
-        <div class="skill Titillium"><img src="javascript-logo.png">JavaScript</div>
-        <div class="skill Titillium"><img src="ts.png">TypeScript</div>
-        <div class="skill Titillium"><img src="React-icon.svg">ReactJS</div>
-        <div class="skill Titillium"><img src="JQuery-Logo.svg">JQuery</div>
-        <div class="skill Titillium"><img src="python-logo.png">Python</div>
-        <!-- <div class="skill"><img src="ps-logo.png">Photoshop</div> -->
-        <!-- <div class="skill Titillium"><img src="1200px-.NET_Core_Logo.svg.png">ASP.NET Core</div> -->
-        <div class="skill Titillium"><img src="1200px-.NET_Core_Logo.svg.png">ASP.NET Core</div>
+        <div class="icon icon-large Titillium"><img src="html5-logo.png">HTML</div>
+        <div class="icon icon-large Titillium"><img src="css3-logo.png">CSS</div>
+        <div class="icon icon-large Titillium"><img src="javascript-logo.png">JavaScript</div>
+        <div class="icon icon-large Titillium"><img src="ts.png">TypeScript</div>
+        <div class="icon icon-large Titillium"><img src="React-icon.svg">ReactJS</div>
+        <div class="icon icon-large Titillium"><img src="JQuery-Logo.svg">JQuery</div>
+        <div class="icon icon-large Titillium"><img src="python-logo.png">Python</div>
+        <!-- <div class="icon"><img src="ps-logo.png">Photoshop</div> -->
+        <!-- <div class="icon Titillium"><img src="1200px-.NET_Core_Logo.svg.png">ASP.NET Core</div> -->
+        <div class="icon icon-large Titillium"><img src="1200px-.NET_Core_Logo.svg.png">ASP.NET Core</div>
     </div>
-    <div class="section">
+    <div id="skills" class="section">
         <h2 class="Titillium">Skills</h2>
         <ul>
             <li>Responsive Web Design</li>
@@ -44,7 +74,7 @@
         </ul>
         <p>and more</p>
     </div>
-    <div class="section">
+    <div id="about" class="section">
         <h2 class="Titillium">About</h2>
         <p>
             Born in Seattle, I was a child drawn to activities that involved building with technology. This ranged from creating custom game mods
@@ -61,23 +91,23 @@
             favorites.
         </p>
     </div>
-    <div class="section">
+    <div id="links" class="section">
         <h2 class="Titillium">Links</h2>
         <a href="William Huynh Software.pdf" target="_blank">
-            <div class="skill Titillium">
-                <img src="pdf.svg">
+            <div class="icon icon-large Titillium">
+                <img src="pdf.svg" class="linksicons">
                 Resume
             </div>
         </a>
         <a href="https://www.linkedin.com/in/williammhuynh/" target="_blank">
-            <div class="skill Titillium">
-                <div class="linkedin fa fa-linkedin"></div>
+            <div class="icon icon-large Titillium">
+                <div class="linkedin linksicons fa fa-linkedin"></div>
                 LinkedIn
             </div>
         </a>
         <a href="https://github.com/williammh" target="_blank">
-            <div class="skill Titillium">
-                <div class="github fa fa-github"></div>
+            <div class="icon icon-large Titillium">
+                <div class="github linksicons fa fa-github"></div>
                 Github
             </div>
         </a>

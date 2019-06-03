@@ -1,12 +1,36 @@
 document.addEventListener("DOMContentLoaded", function(){
-    document.querySelector("#header-container").style.height = window.innerHeight + "px";
-    document.querySelector("#background").style.height = window.innerHeight + "px";
-    // document.querySelector(".section").style.height = window.innerHeight + "px";
-    window.document.addEventListener("scroll", function(){
-        if(window.scrollY != 0){
-            document.querySelector("#background").style.filter = "blur(10px) brightness(85%) saturate(50%)";
+    const background = document.querySelector("#background");
+    const nav = document.querySelector("nav");
+    const hamburger = document.querySelector("button.hamburger");
+    const technologies = document.querySelector("#technologies");
+    const skills = document.querySelector("#skills");
+    const about = document.querySelector("#about");
+    const links = document.querySelector("#links");
+    
+    const blurbackground = () => {
+        if(window.scrollY != 0 || hamburger.classList.contains("is-active")){
+            background.classList.add("blur");
         } else {
-            document.querySelector("#background").style.filter = "blur(.5px) brightness(85%)";
+            background.classList.remove("blur");
         }
+    }
+
+    background.style.height = window.innerHeight + "px";
+
+    document.querySelector("#navTop").addEventListener("click", () => window.scroll({top: 0}));
+    document.querySelector("#navTechnologies").addEventListener("click", () => window.scroll({top: technologies.offsetTop}));
+    document.querySelector("#navSkills").addEventListener("click", () => window.scroll({top: skills.offsetTop}));
+    document.querySelector("#navAbout").addEventListener("click", () => window.scroll({top: about.offsetTop}));
+    document.querySelector("#navLinks").addEventListener("click", () => window.scroll({top: links.offsetTop}));
+
+    document.querySelector("#header-container").style.height = window.innerHeight + "px";
+    window.document.addEventListener("scroll", () => {
+        document.querySelector("#arrow-container").style.opacity = 0;
+        blurbackground();
     })
+    hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("is-active");
+        nav.classList.toggle("is-active");
+        blurbackground();
+    });
 })
