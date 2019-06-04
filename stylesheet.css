@@ -43,7 +43,7 @@ nav {
     position: fixed;
     left: -245px;
     top: 0px;
-    height: 100vh;
+    height: 100%;
     width: auto;
     transition-duration: .5s;
     z-index: 1;
