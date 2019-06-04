@@ -6,14 +6,6 @@ document.addEventListener("DOMContentLoaded", function(){
     const skills = document.querySelector("#skills");
     const about = document.querySelector("#about");
     const links = document.querySelector("#links");
-    
-    const blurbackground = () => {
-        if(window.scrollY != 0 || hamburger.classList.contains("is-active")){
-            background.classList.add("blur");
-        } else {
-            background.classList.remove("blur");
-        }
-    }
 
     document.querySelector("#navTop").addEventListener("click", () => window.scroll({top: 0}));
     document.querySelector("#navTechnologies").addEventListener("click", () => window.scroll({top: technologies.offsetTop}));
@@ -23,7 +15,11 @@ document.addEventListener("DOMContentLoaded", function(){
     
     window.document.addEventListener("scroll", () => {
         document.querySelector("#arrow-container").style.opacity = 0;
-        blurbackground();
+        if(window.scrollY != 0 || hamburger.classList.contains("is-active")){
+            background.classList.add("blur");
+        } else {
+            background.classList.remove("blur");
+        }
     })
     hamburger.addEventListener("click", () => {
         hamburger.classList.toggle("is-active");
