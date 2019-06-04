@@ -15,15 +15,12 @@ document.addEventListener("DOMContentLoaded", function(){
         }
     }
 
-    background.style.height = window.innerHeight + "px";
-
     document.querySelector("#navTop").addEventListener("click", () => window.scroll({top: 0}));
     document.querySelector("#navTechnologies").addEventListener("click", () => window.scroll({top: technologies.offsetTop}));
     document.querySelector("#navSkills").addEventListener("click", () => window.scroll({top: skills.offsetTop}));
     document.querySelector("#navAbout").addEventListener("click", () => window.scroll({top: about.offsetTop}));
     document.querySelector("#navLinks").addEventListener("click", () => window.scroll({top: links.offsetTop}));
-
-    document.querySelector("#header-container").style.height = window.innerHeight + "px";
+    
     window.document.addEventListener("scroll", () => {
         document.querySelector("#arrow-container").style.opacity = 0;
         blurbackground();
@@ -31,6 +28,6 @@ document.addEventListener("DOMContentLoaded", function(){
     hamburger.addEventListener("click", () => {
         hamburger.classList.toggle("is-active");
         nav.classList.toggle("is-active");
-        blurbackground();
+        document.querySelector("#main-container").classList.toggle("blur");
     });
 })

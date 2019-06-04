@@ -29,13 +29,14 @@ html {
     background-position: center center;
     background-attachment: fixed;
     position: fixed;
+    height: 100%;
     width: 100%;
-    filter: blur(.5px) brightness(85%) saturate(60%);
+    filter: brightness(85%) saturate(60%);
     z-index: -1;
     transition-duration: 1s;
 }
-#background.blur {
-    filter: blur(10px) brightness(85%) saturate(40%);
+.blur {
+    filter: blur(6px) brightness(85%) saturate(40%);
 }
 nav {
     position: fixed;
@@ -44,6 +45,7 @@ nav {
     height: 100%;
     width: auto;
     transition-duration: .5s;
+    z-index: 1;
 }
 nav.is-active {
     background-color: #fff9;
@@ -67,6 +69,12 @@ nav li {
 }
 nav.is-active li:hover {
     background-color: #fff8;
+}
+#main-container {
+    transition-duration: .5s;
+}
+#header-container {
+    height: 100vh;
 }
 #header-container * {
     white-space: nowrap;
@@ -99,7 +107,7 @@ p {
 }
 .w3-display-middle {
     position: absolute;
-    top: 50%;
+    top: 50vh;
     left: 50%;
     transform: translate(-50%,-50%);
     -ms-transform: translate(-50%,-50%);
@@ -108,10 +116,10 @@ p {
     padding: 4% 10%;
 }
 .section:nth-child(even) {
-    background-color: #FFFFFFCC;
+    background-color: #EEEEEECC;
 }
 .section:nth-child(odd) {
-    background-color: #EEEEEECC;
+    background-color: #FFFFFFCC;
 }
 .icon {
     display: inline-block;
