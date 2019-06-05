@@ -31,7 +31,7 @@ html {
     background-attachment: fixed;
     position: fixed;
     height: 100%;
-    width: 100vw;
+    width: 100%;
     filter: brightness(85%) saturate(60%);
     z-index: -1;
     transition-duration: 1s;
@@ -187,5 +187,5 @@ ul li {
 	 100% { top: 20px; }
 }
 #cssloadindicator {
-    /* color: red; */
+    color: red;
 }
