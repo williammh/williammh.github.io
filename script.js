@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", function(){
     const skills = document.querySelector("#skills");
     const about = document.querySelector("#about");
     const links = document.querySelector("#links");
-    const mainContainer = document.querySelector("#main-container");
 
     document.querySelector("#navTop").addEventListener("click", () => window.scroll({top: 0}));
     document.querySelector("#navTechnologies").addEventListener("click", () => window.scroll({top: technologies.offsetTop}));
@@ -25,6 +24,6 @@ document.addEventListener("DOMContentLoaded", function(){
     hamburger.addEventListener("click", () => {
         hamburger.classList.toggle("is-active");
         nav.classList.toggle("is-active");
-        mainContainer.classList.toggle("blur");
+        document.querySelector("#main-container").classList.toggle("blur");
     });
 })

@@ -34,16 +34,16 @@ html {
     width: 100vw;
     filter: brightness(85%) saturate(60%);
     z-index: -1;
-    transition-duration: .5s;
+    transition-duration: 1s;
 }
 .blur {
-    filter: blur(6px) brightness(85%) saturate(40%) !important;
+    filter: blur(6px) brightness(85%) saturate(40%);
 }
 nav {
     position: fixed;
     left: -245px;
     top: 0px;
-    height: 100vh;
+    height: 100%;
     width: auto;
     transition-duration: .5s;
     z-index: 1;
@@ -76,7 +76,6 @@ nav.is-active li:hover {
 }
 #header-container {
     height: 100vh;
-    z-index: 0;
 }
 #header-container * {
     white-space: nowrap;
