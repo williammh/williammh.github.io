@@ -26,8 +26,8 @@ document.addEventListener("DOMContentLoaded", function(){
         nav.classList.toggle("is-active");
         document.querySelector("#main-container").classList.toggle("blur");
     });
-    // const calculatedHeight = window.getComputedStyle(background).getPropertyValue("height");
-    // const calculatedWidth = window.getComputedStyle(background).getPropertyValue("width");
-    // background.style.maxHeight = calculatedHeight;
-    // background.style.maxWidth = calculatedWidth;
+    const calculatedHeight = window.getComputedStyle(background).getPropertyValue("height");
+    const calculatedWidth = window.getComputedStyle(background).getPropertyValue("width");
+    background.style.maxHeight = calculatedHeight;
+    background.style.maxWidth = calculatedWidth;
 })
