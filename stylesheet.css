@@ -30,7 +30,7 @@ html {
     background-position: center center;
     background-attachment: fixed;
     position: fixed;
-    height: 100vh;
+    height: 100%;
     width: 100vw;
     filter: brightness(85%) saturate(60%);
     z-index: -1;
