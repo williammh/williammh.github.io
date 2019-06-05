@@ -25,7 +25,6 @@ document.addEventListener("DOMContentLoaded", function(){
         hamburger.classList.toggle("is-active");
         nav.classList.toggle("is-active");
         document.querySelector("#main-container").classList.toggle("blur");
-        background.classList.add("blur");
     });
     const calculatedHeight = window.getComputedStyle(background).getPropertyValue("height");
     const calculatedWidth = window.getComputedStyle(background).getPropertyValue("width");
