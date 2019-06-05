@@ -26,10 +26,10 @@ document.addEventListener("DOMContentLoaded", function(){
         nav.classList.toggle("is-active");
         document.querySelector("#main-container").classList.toggle("blur");
     });
-    const calculatedHeight = window.getComputedStyle(document.querySelector("#background")).getPropertyValue("height");
-    const calculatedWidth = window.getComputedStyle(document.querySelector("#background")).getPropertyValue("width");
-    console.log(calculatedHeight);
-    console.log(calculatedWidth);
-    background.style.maxHeight = calculatedHeight;
-    background.style.maxWidth = calculatedWidth;
+    // const calculatedHeight = window.getComputedStyle(background).getPropertyValue("height");
+    // const calculatedWidth = window.getComputedStyle(background).getPropertyValue("width");
+    // console.log(calculatedHeight);
+    // console.log(calculatedWidth);
+    // background.style.maxHeight = calculatedHeight;
+    // background.style.maxWidth = calculatedWidth;
 })
