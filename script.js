@@ -28,6 +28,8 @@ document.addEventListener("DOMContentLoaded", function(){
         if(nav.classList.contains("is-active")) {
             background.classList.add("blur");
             mainContainer.classList.add("blur");
+        } else if(!nav.classList.contains("is-active") && window.scrollY != 0) {
+            mainContainer.classList.remove("blur");
         } else {
             background.classList.remove("blur");
             mainContainer.classList.remove("blur");
