@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function(){
     const background = document.querySelector("#background");
     const nav = document.querySelector("nav");
     const hamburger = document.querySelector("button.hamburger");
+    const mainContainer = document.querySelector("#main-container");
     const technologies = document.querySelector("#technologies");
     const skills = document.querySelector("#skills");
     const about = document.querySelector("#about");
@@ -24,10 +25,12 @@ document.addEventListener("DOMContentLoaded", function(){
     hamburger.addEventListener("click", () => {
         hamburger.classList.toggle("is-active");
         nav.classList.toggle("is-active");;
-        if(!background.classList.contains("blur")) {
+        if(nav.classList.contains("is-active")) {
             background.classList.add("blur");
+            mainContainer.classList.add("blur");
         } else {
             background.classList.remove("blur");
+            mainContainer.classList.remove("blur");
         }
     });
     // const calculatedHeight = window.getComputedStyle(background).getPropertyValue("height");
