@@ -23,8 +23,12 @@ document.addEventListener("DOMContentLoaded", function(){
     })
     hamburger.addEventListener("click", () => {
         hamburger.classList.toggle("is-active");
-        nav.classList.toggle("is-active");
-        document.querySelector("#main-container").classList.toggle("blur");
+        nav.classList.toggle("is-active");;
+        if(!background.classList.contains("blur")) {
+            background.classList.add("blur");
+        } else {
+            background.classList.remove("blur");
+        }
     });
     // const calculatedHeight = window.getComputedStyle(background).getPropertyValue("height");
     // const calculatedWidth = window.getComputedStyle(background).getPropertyValue("width");
