@@ -39,6 +39,10 @@ html {
 }
 .blur {
     filter: blur(6px) brightness(85%) saturate(40%);
+    -webkit-filter: blur(6px) brightness(85%) saturate(40%);
+    -o-filter: blur(6px) brightness(85%) saturate(40%);
+    -ms-filter: blur(6px) brightness(85%) saturate(40%);
+    -moz-filter: blur(6px) brightness(85%) saturate(40%);
 }
 nav {
     position: fixed;
