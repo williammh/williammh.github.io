@@ -118,10 +118,10 @@ p {
     padding: 4% 10%;
 }
 .section:nth-child(even) {
-    background-color: #EEEEEECC;
+    background-color: #FFFFFFCC;
 }
 .section:nth-child(odd) {
-    background-color: #FFFFFFCC;
+    background-color: #EEEEEECC;
 }
 .icon {
     display: inline-block;
