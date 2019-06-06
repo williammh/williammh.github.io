@@ -8,6 +8,11 @@ document.addEventListener("DOMContentLoaded", function(){
     const about = document.querySelector("#about");
     const links = document.querySelector("#links");
 
+    const calculatedHeight = window.getComputedStyle(background).getPropertyValue("height");
+    const calculatedWidth = window.getComputedStyle(background).getPropertyValue("width");
+    background.style.maxHeight = calculatedHeight;
+    background.style.maxWidth = calculatedWidth;
+
     document.querySelector("#navTop").addEventListener("click", () => window.scroll({top: 0}));
     document.querySelector("#navTechnologies").addEventListener("click", () => window.scroll({top: technologies.offsetTop}));
     document.querySelector("#navSkills").addEventListener("click", () => window.scroll({top: skills.offsetTop}));
@@ -35,8 +40,4 @@ document.addEventListener("DOMContentLoaded", function(){
             mainContainer.classList.remove("blur");
         }
     });
-    // const calculatedHeight = window.getComputedStyle(background).getPropertyValue("height");
-    // const calculatedWidth = window.getComputedStyle(background).getPropertyValue("width");
-    // background.style.maxHeight = calculatedHeight;
-    // background.style.maxWidth = calculatedWidth;
 })
