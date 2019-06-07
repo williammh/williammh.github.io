@@ -134,6 +134,7 @@ p {
     display: inline-block;
     font-size: 1.5em;
     color: #000000;
+    outline: #FFFFFF;
     transition-duration: .5s;
     vertical-align: top;
 }
@@ -149,27 +150,16 @@ p {
     margin: 20px;
     padding: 20px;
 }
-.icon-hover {
+.icon:hover {
     background-color: #FFFFFF44;
     outline: 1px solid #FFFFFF;
     transition-duration: .5s;
 }
-.icon-hover:hover {
-    background-color: #FFFFFF44;
-    outline: 1px solid #FFFFFF;
-}
-
-.test {
-    border: 4px solid red;
-}
-
-
-div img, .icon i {
+div img {
     height: 100px;
     width: 100px;
     display: block;
     margin: auto auto;
-    font-size: 100px;
 }
 .linksicons {
     height: 100px;

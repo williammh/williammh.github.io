@@ -40,17 +40,4 @@ document.addEventListener("DOMContentLoaded", function(){
             mainContainer.classList.remove("blur");
         }
     });
-
-
-    const iconList = document.querySelectorAll(".icon");
-    for(element of iconList) {
-        element.addEventListener("mouseenter", e => {
-            e.target.firstChild.nextElementSibling.classList.add("icon-hover")
-        })
-    }
-    for(element of iconList) {
-        element.addEventListener("mouseleave", e => {
-            e.target.firstChild.nextElementSibling.classList.remove("icon-hover")
-        })
-    }
 })
