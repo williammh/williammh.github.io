@@ -13,13 +13,6 @@ document.addEventListener("DOMContentLoaded", function(){
     background.style.maxHeight = calculatedHeight;
     background.style.maxWidth = calculatedWidth;
 
-    window.addEventListener("orientationchange", () => {
-        background.style.maxHeight = calculatedHeight;
-        background.style.maxWidth = calculatedWidth;
-        background.style.Height = "100%";
-        background.style.Width = "100%";
-    })
-
     document.querySelector("#navTop").addEventListener("click", () => window.scroll({top: 0}));
     document.querySelector("#navTechnologies").addEventListener("click", () => window.scroll({top: technologies.offsetTop}));
     document.querySelector("#navSkills").addEventListener("click", () => window.scroll({top: skills.offsetTop}));

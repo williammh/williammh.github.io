@@ -147,13 +147,11 @@ p {
 .icon-large {
     height: 140px;
     width: 140px;
-    margin: 20px;
+    margin: 20px 20px 60px 20px;
     padding: 20px;
 }
 .icon-large:hover {
-    /* background-color: #FFFFFF44; */
     background-image: linear-gradient(#FFFFFFDD, #FFFFFF00);
-    /* outline: 1px solid #FFFFFF; */
     transition-duration: .5s;
 }
 .icon-small:hover {
