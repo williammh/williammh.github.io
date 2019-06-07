@@ -16,6 +16,8 @@ document.addEventListener("DOMContentLoaded", function(){
     window.addEventListener("orientationchange", () => {
         background.style.maxHeight = calculatedHeight;
         background.style.maxWidth = calculatedWidth;
+        background.style.Height = "100%";
+        background.style.Width = "100%";
     })
 
     document.querySelector("#navTop").addEventListener("click", () => window.scroll({top: 0}));
