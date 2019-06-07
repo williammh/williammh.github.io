@@ -145,9 +145,9 @@ p {
     padding: 10px;
 }
 .icon-large {
-    height: 140px;
+    height: auto;
     width: 140px;
-    margin: 20px 20px 60px 20px;
+    margin: 20px;
     padding: 20px;
 }
 .icon-large:hover {
