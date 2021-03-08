@@ -8,128 +8,187 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="stylesheet.css" rel="stylesheet" type="text/css">
-    <link href="hamburger.css" rel="stylesheet" type="text/css">
-    <script src="script.js"></script>
 </head>
 <body>
-    <div id="background"></div>
-    <nav>
-        <div id="hamburger-container">
-            <button class="hamburger hamburger--spin" type="button">
-                <span class="hamburger-box">
-                    <span class="hamburger-inner"></span>
-                </span>
-            </button>
-        </div>
+  <div id="page-wrapper">
+    <section id="header" class="wrapper">
+      <nav id="nav">
         <ul>
-            <li id="navTop" class="Titillium">Top</li>
-            <li id="navTechnologies" class="Titillium">Technologies</li>
-            <li id="navSkills" class="Titillium">Skills</li>
-            <li id="navAbout" class="Titillium">About</li>
-            <li id="navLinks" class="Titillium">Links</li>
+          <li class="current"><a href="#portfolio">Portfolio</a></li>
+          <li class="current"><a href="#technologies">Technologies</a></li>
+          <li class="current"><a href="#about">About</a></li>
+          <li class="current"><a href="#contact">Contact</a></li>
         </ul>
-    </nav>
-    <div id="main-container">
-        <div id="header-container">
-            <header class="w3-display-middle">
-                <h1 class="Titillium">William Huynh</h1>
-                <h2 class="Titillium">UI Software Engineer</h2>
-                <a href="mailto:whuynh23@gmail.com" target="_blank">
-                    <i class="material-icons icon icon-small email">mail_outline</i>
-                </a>
-                <a href="https://www.linkedin.com/in/williammhuynh/" target="_blank">
-                    <div class="fa fa-linkedin icon icon-small"></div>
-                </a>
-                <a href="https://github.com/williammh" target="_blank">
-                    <div class="fa fa-github icon icon-small"></div>
-                </a>
-                <div id="arrow-container">
-                    <i class="material-icons scroll-indicator">arrow_downward</i>
-                </div>
-            </header>
+      </nav>
+
+      <div id="logo">
+        <h1>William Huynh</h1>
+        <p>UI Software Engineer</p>
+      </div>
+    </section>
+
+    <section id="portfolio" class="wrapper style1">
+      <div class="title">Portfolio</div>
+      <div class="container">
+        <section>
+          <header class="style1">
+            <h3>Other's products</h3>
+          </header>
+          <div class="feature-list">
+            <div class="row">
+              <div class="col-12">
+                <section>
+                  <h3 class="icon brands fa-microsoft">Microsoft 365 Admin Controls</h3>
+                  <p><a href="http://aka.ms/admin-controls" target="_blank">aka.ms/admin-controls</a> (requires internal credentials)</p>
+                  <p>Admin Controls is an inner source library of reusable components built on Fluent UI. Admin Controls is part of M365 Admin Design System.</p>
+                  <p>ReactJS, TypeScript, Node.js, Jest, Enzyme, Git, Azure DevOps, Fluent UI</p>
+                </section>
+              </div>
+              <div class="col-12">
+                <section>
+                  <h3 class="icon brands fa-microsoft">Microsoft Power Virtual Agents</h3>
+                  <p><a href="https://powervirtualagents.microsoft.com" target="_blank">powervirtualagents.microsoft.com</a></p>
+                  <p>Power Virtual Agents enables users without any code or data science knowledge to create AI chat bots via a graphical UI. Virtual Agents is part of the Microsoft Power Platform.</p>
+                  <p>ReactJS, TypeScript, Node.js, Redux, Jest, Enzyme, Sass, Git, Azure DevOps, Fluent UI</p>
+                </section>
+              </div>
+              <div class="col-12">
+                <section>
+                  <h3 class="icon brands fa-microsoft">Microsoft AI Builder</h3>
+                  <p><a href="https://powerapps.microsoft.com/ai-builder" target="_blank">powerapps.microsoft.com/ai-builder</a></p>
+                  <p>AI Builder enables businesses to use AI to automate processes and glean insights from data in Power Apps. AI Builder is part of the Microsoft Power Platform.</p>
+                  <p>ReactJS, TypeScript, Node.js, Mobx, Cypress, Git, Azure DevOps, Fluent UI</p>
+                </section>
+              </div>
+            </div>
+          </div>
+
+          <br />
+
+          <header class="style1">
+            <h3>My own</h3>
+          </header>
+          <div class="feature-list">
+            <div class="row">
+              <div class="col-12">
+                <section>
+                  <h3 class="icon solid fa-basketball-ball">LeagueMaps</h3>
+                  <p><a href="http://www.leaguemaps.com" target="_blank">www.leaguemaps.com</a></p>
+                  <p>LeagueMaps is a data visualization web application for fantasy basketball players to build custom charts on fantasy teams. LeagueMaps is a work in progress.</p>
+                  <p>ReactJS, TypeScript, Node.js, Git, NBA nba.data.net API, Material UI, D3.js</p>
+                </section>
+              </div>
+              <div class="col-12">
+                <section>
+                  <h3 class="icon solid fa-chart-bar">Unnamed algorithmic trading app</h3>
+                  <p>This application collects and processes financial market data in preparation for automated trading strategies.</p>
+                  <p>Python, InteractiveBrokers Client Portal Web API, Azure</p>
+                </section>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section id="technologies" class="wrapper style2">
+      <div class="title">Technologies</div>
+      <div class="container">
+        <section>
+          
+          <div class="row">
+            <div class="col-4">
+              <header class="style1">
+                <h4>Languages</h4>
+              </header>
+              <ul class="style3">
+                <li>JavaScript</li>
+                <li>TypeScript</li>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>SVG</li>
+                <li>C#</li>
+                <li>Python</li>
+                <li>SQL</li>
+              </ul>
+            </div>
+
+            <div class="col-4">
+              <header class="style1">
+                <h4>Libraries</h4>
+              </header>
+              <ul class="style3">
+                <li>ReactJS</li>
+                <li>jQuery</li>
+                <li>D3.js</li>
+              </ul>
+            </div>
+
+            <div class="col-4">
+              <header class="style1">
+                <h4>Other Tech</h4>
+              </header>
+              <ul class="style3">
+                <li>Git</li>
+                <li>Node.js</li>
+                <li>Azure</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section id="about" class="wrapper style1">
+      <div class="title">About</div>
+      <div class="container">
+        <p class="style1">
+          After graduating from university with a non-technical bachelor's degree, I returned home to the Pacific Northwest and
+          worked an array of office and gig-type jobs before teaching myself the ways of a software developer.
+        </p>
+        <p class="style1">
+          My early three years professional experience in the industry is specialized in building the user interfaces for products used by millions all over the globe.
+          Howerver, I have used a variety of technologies at all layers of the contemporary web stack.
+        </p>
+        <p class="style1">
+          A big fan of Indian cuisine, I also enjoy most hazy IPA's.
+        </p>
+      </div>
+    </section>
+
+  <!-- Footer -->
+    <section id="contact" class="wrapper style2">
+      <div class="title">Contact</div>
+      <div class="container">
+        <header class="style1">
+          <a href="william-huynh-resume.pdf" target="_blank"><button>Download Resume</button></a>
+        </header>
+        <div class="row">
+
+          <div class="col-12 col-12-medium">
+            <ul class="style3">
+              <li>
+                <i class="icon fa-envelope"></i>
+                <a href="mailto:whuynh23@gmail.com" target="_blank">whuynh23@gmail.com</a>
+              </li>
+              <li>
+                <i class="icon brands fa-linkedin"></i>
+                <a href="https://www.linkedin.com/in/williammhuynh" target="_blank">williammhuynh</a>
+              </li>
+              <li>
+                <i class="icon brands fa-github"></i>
+                <a href="https://www.github.com/williammh" target="_blank">williammh</a>
+              </li>
+            </ul>
+
+          </div>
         </div>
-        
-        <div id="technologies" class="section">
-            <h2 class="Titillium">Technologies</h2>
-            <div class="icon icon-large Titillium"><img src="html5-logo.png">HTML</div>
-            <div class="icon icon-large Titillium"><img src="css3-logo.png">CSS</div>
-            <div class="icon icon-large Titillium"><img src="Sass_Logo_Color.svg">Sass</div>
-            <div class="icon icon-large Titillium"><img src="javascript-logo.png">JavaScript</div>
-            <div class="icon icon-large Titillium"><img src="ts.png">TypeScript</div>
-            <div class="icon icon-large Titillium"><img src="React-icon.svg">ReactJS</div>
-            <div class="icon icon-large Titillium"><img src="JQuery-Logo.svg">jQuery</div>
-            <div class="icon icon-large Titillium"><img src="python-logo.png">Python</div>
-            <div class="icon icon-large Titillium"><img src="aspdotnetcore.png">ASP.NET Core</div>
-            <!-- <div class="icon icon-large Titillium"><img src="ps-logo.png">Photoshop</div> -->
-            <!-- <div class="icon icon-large Titillium"><img src="sql.png">MySQL</div> -->
-            <!-- test -->
-        </div>
-        <div id="skills" class="section">
-            <h2 class="Titillium">Skills</h2>
-            <div class="icon icon-large Titillium">
-                <i class="fa fa-exchange skill-icon" aria-hidden="true"></i>
-                REST API Development
-            </div>
-            <div class="icon icon-large Titillium">
-                <i class="fa fa-code skill-icon" aria-hidden="true"></i>
-                Single Page Application Development
-            </div>
-            <div class="icon icon-large Titillium">
-                <i class="fa fa-tablet skill-icon" aria-hidden="true"></i>
-                Responsive Web Design
-            </div>
-            <div class="icon icon-large Titillium">
-                <i class="fa fa-globe skill-icon" aria-hidden="true"></i>
-                Cross-Browser Compatibility
-            </div>
-            <div class="icon icon-large Titillium">
-                <i class="fa fa-window-restore skill-icon" aria-hidden="true"></i>
-                User Interface Engineering
-            </div>
-            <div class="icon icon-large Titillium">
-                <i class="fa fa-code-fork skill-icon" aria-hidden="true"></i>
-                Asynchronous Programming
-            </div>
-        </div>
-        <div id="about" class="section">
-            <h2 class="Titillium">About</h2>
-            <p>
-                Born in Seattle, I was a child drawn to activities that involved building with technology. This ranged from creating custom game mods
-                for Starcraft: Brood War to writing early websites using Notepad and Photoshop.
-                After graduating from The University of Arizona with my bachelor
-                of science in public policy, I returned home to the Pacific Northwest and began teaching myself
-                more modern methods of web development.
-            </p>
-            <p>
-                Today, I offer my services by helping build <a href="https://www.youtube.com/watch?v=J5i7h4Uzju4" target="_blank">Microsoft Power Virtual Agents</a>, a product that enables
-                anyone to easily create their own custom conversational AI bot without any knowledge of code or data science. Though when not working on the future of autonomous customer service technology,
-                I might be found learning new technologies, weightlifting, playing PC games, or watching documentaries. I consider myself a big science enthusiast and highly recommend
-                <a href="https://www.youtube.com/playlist?list=PL3ew22s-xZFmn_4y6vVJ8KMYUCBtx3789" target="_blank">these</a>
-                favorites.
-            </p>
-        </div>
-        <div id="links" class="section">
-            <h2 class="Titillium">Links</h2>
-            <a href="william-huynh-resume.pdf" target="_blank">
-                <div class="icon icon-large Titillium">
-                    <img src="pdf.svg" class="linksicons">
-                    Resume
-                </div>
-            </a>
-            <a href="https://www.linkedin.com/in/williammhuynh/" target="_blank">
-                <div class="icon icon-large Titillium">
-                    <div class="linkedin linksicons fa fa-linkedin"></div>
-                    LinkedIn
-                </div>
-            </a>
-            <a href="https://github.com/williammh" target="_blank">
-                <div class="icon icon-large Titillium">
-                    <div class="github linksicons fa fa-github"></div>
-                    Github
-                </div>
-            </a>
-        </div>
-        <div style="background-color: #EEEEEECC;"><span style="opacity: .25"><span id="cssloadindicator">PDF</span> icon made by <a href="https://www.flaticon.com/authors/dimitry-miroliubov" title="Dimitry Miroliubov">Dimitry Miroliubov</a> from <a href="https://www.flaticon.com/" 			    title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" 			    title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></span></div>
-    </div>
+    </section>
+
+
+
+  </div>
+  <script src="script.js"></script>
 </body>
+
 </html>
