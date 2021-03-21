@@ -184,12 +184,11 @@ header.style1 {
 /* Nav */
 
 #nav {
-    position: absolute;
     display: block;
-    top: 2.5em;
-    left: 0;
     width: 100%;
     text-align: center;
+    position: absolute;
+    top: 1em;
 }
 
     #nav > ul {
@@ -239,8 +238,9 @@ header.style1 {
 #logo {
     width: 100%;
     text-align: center;
-    position: relative;
-    top: 1.5em;
+    z-index: 3;
+    /* position: relative; */
+    /* top: 1.5em; */
 }
 
     #logo h1 {
@@ -260,6 +260,27 @@ header.style1 {
         font-size: 0.9em;
     }
 
+#social {
+    margin-top: 1.25em;
+}
+
+#social i {
+    backdrop-filter: blur(6px) brightness(.8);
+    padding: 10px;
+    border: 1px solid transparent;
+    font-size: 1em;
+    border-radius: 0.35em;
+    color: #eee;
+}
+
+#social i:hover {
+    cursor: pointer;
+    background-color: #0004;
+    transition-duration: .25s;
+    color: #fff;
+}
+
+
 #header {
     display: -moz-flex;
     display: -webkit-flex;
@@ -278,6 +299,8 @@ header.style1 {
     background-color: #222222;
     background-size: cover;
     padding: 0;
+
+    flex-direction: column;
 }
 
     #header:before {
@@ -1740,14 +1763,14 @@ button {
         font-style: normal;
         font-variant: normal;
         text-rendering: auto;
-        line-height: 1;
+        /* line-height: 1; */
         text-transform: none !important;
         font-family: 'Font Awesome 5 Free';
         font-weight: 400;
     }
 
     .icon:before {
-        line-height: inherit;
+        /* line-height: inherit; */
         font-size: 1.25em;
     }
 
@@ -1761,6 +1784,7 @@ button {
 
     .icon.brands:before {
         font-family: 'Font Awesome 5 Brands';
+        margin: auto;
     }
 
 
@@ -2037,10 +2061,6 @@ ol {
             }
 
     /* Nav */
-
-        #nav {
-            display: none;
-        }
 
     /* Logo */
 
