@@ -31,16 +31,13 @@ footer, header, hgroup, menu, nav, section {
 
 body {
 	line-height: 1;
+    -webkit-text-size-adjust: none;
+    width: 100%;
 }
 
 ol, ul {
 	list-style: none;
 }
-
-body {
-	-webkit-text-size-adjust: none;
-}
-
 
 /* Basic */
 
@@ -100,7 +97,7 @@ a {
     }
 
 p, ul {
-    margin-bottom: 2em;
+    margin-bottom: 1em;
 }
 
 /* Page Wrapper */
@@ -184,19 +181,25 @@ header.style1 {
 /* Nav */
 
 #nav {
-    display: block;
+    display: flex;
+    justify-content: center;
     width: 100%;
     text-align: center;
-    position: absolute;
-    top: 1em;
+    margin-top: 1em;
+    margin-left: 0px;
 }
 
     #nav > ul {
-        display: inline-block;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: center;
+        width:fit-content;
         border-radius: 0.35em;
         box-shadow: inset 0px 0px 1px 1px rgba(255, 255, 255, 0.25);
         padding: 0 1.5em 0 1.5em;
         backdrop-filter: blur(6px) brightness(.8);
+        max-width: 100vw;
     }
 
         #nav > ul > li {
@@ -249,6 +252,7 @@ header.style1 {
         color: #fff;
         font-size: 2em;
         letter-spacing: 0.25em;
+        margin-top: 1em;
     }
 
     #logo p {
@@ -290,10 +294,10 @@ header.style1 {
     -webkit-align-items: center;
     -ms-align-items: center;
     align-items: center;
-    -moz-justify-content: center;
-    -webkit-justify-content: center;
-    -ms-justify-content: center;
-    justify-content: center;
+    /* -moz-justify-content: center;
+    -webkit-justify-content: center; */
+    /* -ms-justify-content: center;
+    justify-content: center; */
     position: relative;
     height: 24em;
     background-color: #222222;
@@ -312,6 +316,7 @@ header.style1 {
         background: url("background8.png") top center;
         filter: blur(2px) brightness(.75);
         background-repeat: no-repeat;
+        max-width: 100vw;
     }
 
     .homepage #header {
@@ -468,8 +473,7 @@ header.style1 {
     }
 
     .feature-list h3 {
-        /* color: #e97770 !important; */
-        margin: -0.35em 0 0.75em 0;
+        margin: -0.35em 0 0 0;
         font-size: 1.15em;
         letter-spacing: 0.05em;
     }
@@ -2408,8 +2412,8 @@ ol {
 
         #logo {
             text-align: center;
-            padding-left: 2em;
-            padding-right: 2em;
+            /* padding-left: 2em;
+            padding-right: 2em; */
         }
 
             #logo h1 {
