@@ -187,6 +187,7 @@ header.style1 {
     text-align: center;
     margin-top: 1em;
     margin-left: 0px;
+    overflow: hidden;
 }
 
     #nav > ul {
