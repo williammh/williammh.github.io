@@ -1992,10 +1992,25 @@ ol {
 
         #logo {
             margin-top: -0.5em !important;
+            text-transform: uppercase;
         }
 
             #logo h1 {
-                font-size: 1.75em;
+                font-size: 2em;
+            }
+
+            #logo h2 {
+                font-size: 1.5em;
+                color: #fff;
+                font-weight: normal;
+                margin-top: 1em;
+            }
+
+            #logo h3 {
+                font-size: 1em;
+                color: #fff;
+                font-weight: normal;
+                margin-top: 1em;
             }
 
     /* Intro */
