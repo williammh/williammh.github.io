@@ -3,7 +3,7 @@
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400italic,700,900");
 
 * {
-	padding: 0;
+	/* padding: 0; */
     margin: 0;
 }
 
@@ -19,7 +19,7 @@ canvas, details, embed, figure, figcaption,
 footer, header, hgroup, menu, nav, output, ruby,
 section, summary, time, mark, audio, video {
 	margin: 0;
-	padding: 0;
+	/* padding: 0; */
 	border: 0;
 	font-size: 100%;
 	font: inherit;
@@ -67,21 +67,37 @@ html {
 body {
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 400;
-    color: #919499;
     font-size: 14pt;
     line-height: 1.75em;
     letter-spacing: 0.025em;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    font-weight: 700;
-    color: #484d55;
+h1, h2, h3 {
+    font-weight: 600;
 }
 
-    h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
-        color: inherit;
-        text-decoration: none;
-    }
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+    color: inherit;
+    text-decoration: none;
+}
+
+h2 {
+    margin-top: 1em;
+    font-weight: 500;
+    letter-spacing: .5em;
+}
+
+h3 {
+    margin-top: 0em;
+    font-weight: 300;
+    letter-spacing: .25em;
+
+}
+
+h4 {
+    color: #fff;
+}
+
 
 a {
     -moz-transition: color .25s ease-in-out;
@@ -253,7 +269,7 @@ header.style1 {
         color: #fff;
         font-size: 2em;
         letter-spacing: 0.25em;
-        margin-top: 1em;
+        margin-top: 1.5em;
     }
 
     #logo p {
@@ -300,7 +316,8 @@ header.style1 {
     background-color: #222222;
     background-size: cover;
     padding: 0;
-
+    color: #fff;
+    text-transform: uppercase;
     flex-direction: column;
 }
 
@@ -422,12 +439,12 @@ header.style1 {
         }
 
     .wrapper.style2 {
-        background: #fff;
+        background: #131621;
     }
 
         .wrapper.style2 .title {
-            background: #fff;
-            color: #484d55;
+            background: #131621;
+            color: #fff;
         }
 
     .wrapper.style3 {
@@ -1794,6 +1811,7 @@ button {
 ul {
     list-style: disc;
     padding-left: 1em;
+    color: #fff;
 }
 
     ul li {
@@ -1999,8 +2017,8 @@ ol {
                 font-size: 2em;
             }
 
-            #logo h2 {
-                font-size: 1.5em;
+            /* #logo h2 {
+                font-size: 1.25em;
                 color: #fff;
                 font-weight: normal;
                 margin-top: 1em;
@@ -2011,7 +2029,7 @@ ol {
                 color: #fff;
                 font-weight: normal;
                 margin-top: 1em;
-            }
+            } */
 
     /* Intro */
 
