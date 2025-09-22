@@ -12,8 +12,11 @@ body {
 }
 h1 {
     font-size: 2rem;
-    color: #00FF8D;
 }
+h3 {
+    margin-top: 4rem;
+}
+
 p {
     margin-bottom: 1rem;
 }
@@ -73,7 +76,7 @@ li {
     font-style: italic;
 }
 a {
-    color: #fff;
+    color: #00FF8D;;
     font-weight: bold;
     text-decoration: none;
 }
