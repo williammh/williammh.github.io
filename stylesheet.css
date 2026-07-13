@@ -36,6 +36,18 @@ p {
     max-width: 68ch;
 }
 
+.social {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    margin-top: 0.75rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+}
+.social a {
+    font-weight: 400;
+}
+
 .project {
     margin-bottom: 3rem;
     padding-top: 3rem;
