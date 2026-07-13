@@ -1,0 +1,357 @@
+<resume_generation_prompt>
+  <task>Generate an ATS-optimized resume tailored to the provided target job description. Select the most relevant experience and skills while maintaining factual accuracy. De-emphasize or omit less relevant roles as needed.</task>
+    <generation_rules>
+        <max_length>1 page</max_length>
+        <bullet_style>impact-driven, metric-first</bullet_style>
+        <tone>professional and concise</tone>
+        <avoid>
+            <item>fluff</item>
+            <item>generic verbs like 'responsible for'</item>
+            <item>bold or special formatting inside the bullet points</item>
+            <item>bold in the contact information line</item>
+        </avoid>
+        <selection_strategy>Prioritize experience that matches the job description keywords and required skills.</selection_strategy>
+        <allow_omission_of_roles>true</allow_omission_of_roles>
+    </generation_rules>
+
+    <target_company>
+        
+    </target_company>
+    <target_job_title>
+        Software Engineer
+    </target_job_title>
+    <target_job_description>
+     
+    </target_job_description>
+
+    <positioning_strategy>
+        <target_seniority>Auto-detect from job description</target_seniority>
+        <primary_identity>Full-stack product engineer</primary_identity>
+        <secondary_strengths>
+            <strength>React + TypeScript systems</strength>
+            <strength>API architecture</strength>
+            <strength>performance optimization</strength>
+            <strength>accessibility</strength>
+            <strength>cloud deployment</strength>
+            <strength>data pipeline engineering</strength>
+            <strength>LLM integration and deployment</strength>
+            <strength>prompt engineering for behavioral control</strength>
+            <strength>self-hosted inference architecture</strength>
+        </secondary_strengths>
+    </positioning_strategy>
+
+    <candidate_profile>
+        <name>William Huynh</name>
+        <location>Las Vegas, NV</location>
+        <linkedin>linkedin.com/in/williammhuynh</linkedin>
+        <github>williammh.github.io</github>
+        <mobile>206-999-3618</mobile>
+    </candidate_profile>
+
+    <work_experience>
+         
+        <role>
+            <employer>Stealth Startup</employer>
+            <title>Technical Lead and Developer</title>
+            <employment_type>Independent Consulting</employment_type>
+            <location>(Remote)</location>
+            <start_date>10/2025</start_date>
+            <end_date>04/2026</end_date>
+            <technologies>
+                <item>Next.js</item>
+                <item>TypeScript</item>
+                <item>Prisma ORM</item>
+                <item>PostgreSQL</item>
+                <item>Shadcn</item>
+                <item>TailwindCSS</item>
+                <item>Stripe</item>
+                <item>Mailgun</item>
+                <item>Vercel</item>
+                <item>NextAuth</item>
+                <item>Playwright</item>
+            </technologies>
+            <domain>SaaS Marketplace</domain>
+            <focus>
+                <item>Full-stack SaaS marketplace with user product listings, search, filters, and reviews</item>
+                <item>Stripe Checkout, Billing, Connect — one-time, subscription, invoicing, and seller payouts</item>
+                <item>Role-based access control (Buyer, Seller, Admin)</item>
+                <item>Admin console for content moderation, approvals, and commission management</item>
+                <item>Full-stack community platform with user-generated content, tiered membership access, and email automation via Mailgun</item>
+            </focus>
+
+            <employer>LiveTape.ai</employer>
+            <title>Project Lead and Developer</title>
+            <employment_type>Independent Consulting</employment_type>
+            <location>(Remote)</location>
+            <start_date>09/2023</start_date>
+            <end_date>Present</end_date>
+            <technologies>
+                <item>React</item>
+                <item>TypeScript</item>
+                <item>Shadcn</item>
+                <item>TailwindCSS</item>
+                <item>Python</item>
+                <item>Numpy</item>
+                <item>Pandas</item>
+                <item>Matplotlib</item>
+                <item>ApexCharts.js</item>
+                <item>Redis</item>
+                <item>FastAPI</item>
+                <item>Websockets</item>
+                <item>Thunder Compute</item>
+            </technologies>
+            <domain>Trading infrastructure / AI experimentation</domain>
+            <focus>
+                <item>Python backtesting engine (tick-level simulation)</item>
+                <item>FastAPI backend deployment (Thunder Compute)</item>
+                <item>Vercel frontend deployment</item>
+                <item>ETL data streaming pipelines</item>
+                <item>Market data visualization</item>
+                <item>Fallback replay logic when backend offline</item>
+            </focus>
+        </role>
+
+        <role>
+            <employer>Smartsheet</employer>
+            <title>Software Engineer II</title>
+            <employment_type>Full-time</employment_type>
+            <location>Bellevue, WA (Remote)</location>
+            <start_date>06/2021</start_date>
+            <end_date>09/2023</end_date>
+            <technologies>
+                <item>React</item>
+                <item>TypeScript</item>
+                <item>Jest</item>
+                <item>HTML</item>
+                <item>CSS</item>
+                <item>Node.js</item>
+                <item>Redux</item>
+                <item>Smartsheet</item>
+                <item>Gitlab</item>
+                <item>Jira</item>
+                <item>AWS</item>
+                <item>Docker</item>
+            </technologies>
+            <methodologies>
+                <item>Agile</item>
+                <item>Scrum</item>
+            </methodologies>
+            <domain>Enterprise SaaS project management</domain>
+            <focus>
+                <item>Smartsheet Control Center</item>
+                <item>React design system (Lodestar)</item>
+                <item>UI performance optimization</item>
+                <item>Internationalization (3M+ users)</item>
+                <item>Enterprise product used by 96 of Fortune 100</item>
+            </focus>
+        </role>
+
+        <role>
+            <employer>Microsoft (Insight Global)</employer>
+            <title>UX Engineer (Application Developer 3)</title>
+            <employment_type>Contract</employment_type>
+            <location>Redmond, WA (Remote)</location>
+            <start_date>08/2020</start_date>
+            <end_date>05/2021</end_date>
+            <technologies>
+                <item>React</item>
+                <item>TypeScript</item>
+                <item>Jest</item>
+                <item>Enzyme</item>
+                <item>HTML</item>
+                <item>CSS</item>
+                <item>Node.js</item>
+                <item>Azure DevOps</item>
+            </technologies>
+            <methodologies>
+                <item>Agile</item>
+                <item>Scrum</item>
+            </methodologies>
+            <domain>Microsoft 365 Admin</domain>
+            <focus>
+                <item>Inner-source React design system</item>
+                <item>WCAG 2.1 accessibility compliance</item>
+                <item>Reusable component architecture</item>
+                <item>Azure DevOps workflows</item>
+            </focus>
+        </role>
+
+        <role>
+            <employer>Microsoft (Mindtree)</employer>
+            <title>Software Engineer (Technical Lead)</title>
+            <employment_type>Contract</employment_type>
+            <location>Bellevue, WA (Remote)</location>
+            <start_date>01/2020</start_date>
+            <end_date>08/2020</end_date>
+            <technologies>
+                <item>React</item>
+                <item>TypeScript</item>
+                <item>Jest</item>
+                <item>Redux</item>
+                <item>Mobx</item>
+                <item>Enzyme</item>
+                <item>HTML</item>
+                <item>CSS</item>
+                <item>Node.js</item>
+                <item>Azure DevOps</item>
+            </technologies>
+            <methodologies>
+                <item>Agile</item>
+                <item>Scrum</item>
+            </methodologies>
+            <domain>Power Platform (AI Builder, Power Virtual Agents)</domain>
+            <focus>
+                <item>Frontend architecture modernization</item>
+                <item>TypeScript lint migration</item>
+                <item>Accessibility improvements</item>
+                <item>Cross-functional collaboration</item>
+            </focus>
+        </role>
+
+        <role>
+            <employer>ConnectWise</employer>
+            <title>Form Designer</title>
+            <employment_type>Full-time</employment_type>
+            <location>Bothell, WA</location>
+            <start_date>06/2018</start_date>
+            <end_date>12/2019</end_date>
+            <technologies>
+                <item>HTML</item>
+                <item>CSS</item>
+                <item>Javascript</item>
+                <item>C#</item>
+                <item>jQuery</item>
+            </technologies>
+            <methodologies>
+                <item>Agile</item>
+                <item>Kanban</item>
+            </methodologies>
+            <domain>Configure, Price, Quote (CPQ) SaaS</domain>
+            <focus>
+                <item>Developing custom web UI solutions</item>
+                <item>Providing estimates on time to project delivery</item>
+                <item>Presenting to technical and non-technical executive stakeholders</item>
+                <item>Maintained #1 client satisfaction ranking every month</item>
+            </focus>
+        </role>
+    </work_experience>
+
+    <projects>
+        <project>
+            <title>Graphclone</title>
+            <repository>https://github.com/williammh/graphclone</repository>
+            <technologies>
+                <item>Next.js</item>
+                <item>TypeScript</item>
+                <item>Shadcn</item>
+                <item>TailwindCSS</item>
+                <item>Python</item>
+                <item>Playwright</item>
+                <item>Beautiful Soup</item>
+                <item>Github Copilot</item>
+            </technologies>
+            <domain>Web scraping and automated document generation</domain>
+            <features>
+                <item>Scrapes and crawls complex website structures</item>
+                <item>Realistic Chrome browser fingerprints avoids anti-bot detection</item>
+                <item>Authenticated session with user login enables scraping of gated content</item>
+                <item>Multi-prong handles parameterized routes to prevent duplicate mapping</item>
+                <item>Wireframe building agent creates interactive wireframe from scraped data</item>
+                <item>Generates comprehensive product specification document</item>
+            </features>
+        </project>
+    </projects>
+
+    <skills>
+        <languages>
+            <item>TypeScript</item>
+            <item>JavaScript</item>
+            <item>Python</item>
+        </languages>
+        <frontend>
+            <item>React</item>
+            <item>Next.js</item>
+            <item>HTML</item>
+            <item>CSS</item>
+            <item>CSS-in-JS</item>
+            <item>SASS</item>
+            <item>TailwindCSS</item>
+            <item>Material UI</item>
+            <item>Shadcn</item>
+            <item>Fluent UI</item>
+        </frontend>
+        <backend>
+            <item>Node.js</item>
+            <item>FastAPI</item>
+        </backend>
+        <databases>
+            <item>PostgreSQL</item>
+            <item>Redis</item>
+        </databases>
+        <orm>
+            <item>Prisma</item>
+        </orm>
+        <cloud>
+            <item>AWS</item>
+            <item>Azure</item>
+            <item>Vercel</item>
+            <item>Thunder Compute</item>
+            <item>Cloudflare</item>
+            <item>Oracle Cloud Infrastructure</item>
+            <item>Digital Ocean</item>
+        </cloud>
+        <devops>
+            <item>Azure DevOps</item>
+            <item>GitLab</item>
+        </devops>
+        <testing>
+            <item>Jest</item>
+            <item>Vitest</item>
+            <item>Playwright</item>
+            <item>Enzyme</item>
+            <item>Storybook</item>
+            <item>Cypress</item>
+            <item>Postman</item>
+        </testing>
+        <project_management>
+            <item>Jira</item>
+            <item>Smartsheet</item>
+        </project_management>
+        <data_ml>
+            <item>NumPy</item>
+            <item>Pandas</item>
+            <item>Matplotlib</item>
+        </data_ml>
+        <code_editors>
+            <item>VSCode</item>
+            <item>Cursor</item>
+            <item>GitHub Copilot</item>
+        </code_editors>
+        <llms>
+            <item>ChatGPT</item>
+            <item>Claude</item>
+            <item>Perplexity</item>
+            <item>LLaMA</item>
+            <item>Grok</item>
+            <item>Gemini</item>
+        </llms>
+        <integrations>
+            <item>Stripe API and SDK</item>
+            <item>Google Maps API and SDK</item>
+            <item>Tradestation Web API</item>
+            <item>Polymarket API</item>
+            <item>Ollama API</item>
+            <item>OAuth</item>
+        </integrations>
+    </skills>
+
+    <education>
+        <degree>Bachelor of Science, Public Policy</degree>
+        <institution>The University of Arizona</institution>
+    </education>
+
+    <certifications>
+        <item>Microsoft Azure Fundamentals (AZ-900)</item>
+        <item>AWS Machine Learning Engineer - Associate (In Progress)</item>
+    </certifications>
+</resume_generation_prompt>
