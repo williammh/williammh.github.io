@@ -18,18 +18,35 @@
   </p>
     
     <h3>Portfolio</h3>
-    <a href="https://livetape.ai" target="_blank">livetape.ai</a>
-    <p>
-      A no-code algorithmic trading platform. Users build agents that evaluate live market data at tick resolution and execute autonomously across equities, crypto, and prediction markets. Built solo: real-time WebSocket ingestion, an agent orchestration layer where agents deploy and retire other agents, and stateful market memory that persists across sessions.
-    <p><strong>Technologies used: </strong>Python, FastAPI, Redis, Websockets, ReactJS, TypeScript, Thunder Compute, Cloudflare, Linux, custom LLM integration</p>
-    
-    <a href="https://github.com/williammh/graphclone" target="_blank">
-     Graphclone
-    </a>
-    <p>
-      A site-architecture mapper for consulting scope. An async Playwright crawler traverses a target site, canonicalizes dynamic routes into a structural map, and feeds that into a wireframe builder that outputs reviewable layouts and a PRD. Supports authenticated crawls via a manual login handoff, so gated content is reachable without ever handling a client's credentials. I use it to scope and anchor every engagement I take.
-    </p>
-     <p><strong>Technologies used: </strong>Python, Playwright, asyncio, Next.js, TypeScript</p>
+
+    <article class="project">
+      <a class="project-title" href="https://livetape.ai" target="_blank">livetape.ai</a>
+      <figure class="shot">
+        <a href="https://livetape.ai" target="_blank" aria-label="Open LiveTape.ai">
+          <img class="screenshot" src="./livetape.png" alt="LiveTape.ai agent panel with a live tick chart" onerror="this.closest('.shot').style.display='none'" />
+        </a>
+        <figcaption>An agent evaluating a Bollinger rule and executing live against BTCUSD.</figcaption>
+      </figure>
+      <p>
+        A real-time, multi-tenant strategy execution engine for financial markets. Generating a trading idea is cheap now that LLMs exist; running it correctly and continuously against live markets is the hard part. LiveTape evaluates a user-composed expression tree against every incoming tick at sub-50ms internal latency — not once per bar close, like most no-code tools. Built and run solo, in production across crypto, equities, and prediction markets: a lock-free memory-mapped seqlock between the data-ingestion and evaluation processes, a deterministic logical clock so backtests and live runs share identical code paths, and a visual AST builder whose frontend holds zero trading logic — one grammar, validated the same way on both sides.
+      </p>
+      <p class="more"><a href="./ABOUT_LIVETAPE.pdf" target="_blank">Read the full technical writeup →</a></p>
+      <p class="tech"><strong>Technologies used: </strong>Python, FastAPI, asyncio, NumPy, Postgres, Redis, React, TypeScript, Zod, Docker, OCI ARM64, Cloudflare</p>
+    </article>
+
+    <article class="project">
+      <a class="project-title" href="https://github.com/williammh/graphclone" target="_blank">Graphclone</a>
+      <figure class="shot">
+        <a href="https://github.com/williammh/graphclone" target="_blank" aria-label="Open Graphclone on GitHub">
+          <img class="screenshot" src="./graphclone.png" alt="A job-detail page wireframe reconstructed by Graphclone from a live crawl" onerror="this.closest('.shot').style.display='none'" />
+        </a>
+        <figcaption>A page template reconstructed by Graphclone from a live crawl, exported to PDF.</figcaption>
+      </figure>
+      <p>
+        A site-architecture mapper for consulting scope. An async Playwright crawler traverses a target site, canonicalizes dynamic routes into a structural map, and feeds that into a wireframe builder that outputs reviewable layouts and a PRD. Supports authenticated crawls via a manual login handoff, so gated content is reachable without ever handling a client's credentials. I use it to scope and anchor every engagement I take.
+      </p>
+      <p class="tech"><strong>Technologies used: </strong>Python, Playwright, asyncio, Next.js, TypeScript</p>
+    </article>
 
     <!-- <h3>Some preferred tools</h3>
     <ul>
