@@ -61,10 +61,10 @@ p {
     display: block;
     font-size: 1.5rem;
     margin-bottom: 1rem;
-    color: #f0f0f0;
+    color: #00FF8D;
 }
 .project-title:hover {
-    color: #00FF8D;
+    text-decoration: underline;
 }
 .live-tag {
     font-size: 0.7rem;
