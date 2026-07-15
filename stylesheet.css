@@ -66,6 +66,13 @@ p {
 .project-title:hover {
     color: #00FF8D;
 }
+.live-tag {
+    font-size: 0.7rem;
+    font-weight: 400;
+    color: #8a8f99;
+    text-transform: none;
+    letter-spacing: normal;
+}
 .shot {
     margin: 0 0 1rem 0;
 }
