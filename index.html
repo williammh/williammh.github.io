@@ -37,7 +37,7 @@
       <p>
         A real-time, multi-tenant strategy execution engine for financial markets. Generating a trading idea is cheap now that LLMs exist; running it correctly and continuously against live markets is the hard part. LiveTape evaluates a user-composed expression tree against every incoming tick at sub-50ms internal latency — not once per bar close, like most no-code tools. Built and run solo, in production across crypto, equities, and prediction markets: a lock-free memory-mapped seqlock between the data-ingestion and evaluation processes, a deterministic logical clock so backtests and live runs share identical code paths, and a visual AST builder whose frontend holds zero trading logic — one grammar, validated the same way on both sides.
       </p>
-      <p class="more"><a href="./ABOUT_LIVETAPE.pdf" target="_blank">Read the full technical writeup →</a></p>
+      <p class="more"><a href="./livetape-technical-specs.pdf" target="_blank">Read the full technical writeup →</a></p>
       <p class="tech"><strong>Technologies used: </strong>Python, FastAPI, asyncio, NumPy, Postgres, Redis, React, TypeScript, Zod, Docker, OCI ARM64, Cloudflare</p>
     </article>
 
