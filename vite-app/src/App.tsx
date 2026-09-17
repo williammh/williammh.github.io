@@ -28,8 +28,12 @@ const SOCIAL_ICON: Record<string, ReactNode> = {
       <img src={githubLogo} alt="" className="size-full" />
     </span>
   ),
-  Email: <EnvelopeIcon className="size-4 shrink-0" aria-hidden="true" />,
-  Resume: <FilePdfIcon className="size-4 shrink-0" aria-hidden="true" />,
+  Email: (
+    <EnvelopeIcon className="size-4 shrink-0 text-white" aria-hidden="true" />
+  ),
+  Resume: (
+    <FilePdfIcon className="size-4 shrink-0 text-white" aria-hidden="true" />
+  ),
 }
 
 /**
@@ -59,34 +63,34 @@ type CarouselGeometry = {
 }
 
 const CAROUSEL_BREAKPOINTS: CarouselGeometry[] = [
-  // denominator 800 + 310 + 120 = 1230, so scale ≈ 1056/1230 ≈ 0.86 against
+  // denominator 800 + 400 + 120 = 1320, so scale ≈ 1056/1320 ≈ 0.80 against
   // the 1056px column. Depth does the fan's separation: at perspective 1200 a
-  // d=1 neighbour renders at 1200/1630 ≈ 0.74 its on-screen height (d=2 ≈
-  // 0.58), so receding cards read as smaller and further back rather than
+  // d=1 neighbour renders at 1200/1750 ≈ 0.69 its on-screen height (d=2 ≈
+  // 0.51), so receding cards read as smaller and further back rather than
   // fanning out at near-full height. Spread stays big enough that each
-  // neighbour's far edge still peeks ~60px past the focused card.
+  // neighbour's far edge still peeks well past the focused card.
   {
     min: 1024,
     cardWidth: 800,
     cardHeight: 860,
-    spread: 155,
-    depth: 430,
+    spread: 200,
+    depth: 550,
     visibleCards: 4,
   },
   {
     min: 768,
     cardWidth: 600,
     cardHeight: 840,
-    spread: 135,
-    depth: 360,
+    spread: 175,
+    depth: 460,
     visibleCards: 3,
   },
   {
     min: 480,
     cardWidth: 420,
     cardHeight: 800,
-    spread: 95,
-    depth: 265,
+    spread: 125,
+    depth: 340,
     visibleCards: 3,
   },
   // Phones: a modest fan rather than none, so neighbours still peek out from
@@ -95,9 +99,13 @@ const CAROUSEL_BREAKPOINTS: CarouselGeometry[] = [
   {
     min: 0,
     cardWidth: 560,
-    cardHeight: 1180,
-    spread: 45,
-    depth: 200,
+    // Was 1180: the article's content (title, image, caption, description,
+    // links, badges) only needs ~630px at this width — the article fills
+    // whatever cardHeight it's given without growing to match, so the extra
+    // ~550px just sat as dead space between the badges and the dots below.
+    cardHeight: 660,
+    spread: 60,
+    depth: 260,
     visibleCards: 2,
   },
 ]
@@ -267,7 +275,11 @@ export function App() {
           Portfolio
         </h2>
 
-        <div className={fitDesktop ? "relative mt-8 min-h-0 flex-1" : "relative mt-8 mb-10"}>
+        <div
+          className={
+            fitDesktop ? "relative mt-8 min-h-0 flex-1" : "relative mt-8 mb-10"
+          }
+        >
           <DepthCarousel
             items={content.projects}
             className="portfolio-carousel"
@@ -276,7 +288,7 @@ export function App() {
             fitHeight={fitDesktop}
             tilt={0}
             tiltDirection="right"
-            perspective={1200}
+            perspective={2400}
             visibleCards={geometry.visibleCards}
             falloff={0.4}
             blur={13}

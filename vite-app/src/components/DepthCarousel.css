@@ -12,8 +12,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  perspective: var(--dc-perspective, 1400px);
-  perspective-origin: 50% 50%;
   touch-action: pan-y;
   outline: none;
   user-select: none;
@@ -35,6 +33,15 @@
   position: absolute;
   inset: 0;
   transform-style: preserve-3d;
+  /* `perspective` must live on the transformed cards' direct parent to fold
+     into their resolved transform matrix — set on `.depth-carousel` (the
+     stage's own parent) instead, it was one level too high: the browser
+     built each card's matrix3d with no perspective term at all (w stayed 1
+     instead of picking up -1/perspective), so translateZ moved cards back
+     and forth with zero size change. Moving it here is what actually makes
+     receding cards render smaller. */
+  perspective: var(--dc-perspective, 1400px);
+  perspective-origin: 50% 50%;
 }
 
 .depth-carousel__card {
