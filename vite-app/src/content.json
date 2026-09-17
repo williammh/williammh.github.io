@@ -1,0 +1,83 @@
+{
+  "name": "William M Huynh",
+  "title": "Software Engineer",
+  "summary": "I build production systems end to end. I've shipped enterprise software used by 96 of the Fortune 100 and design systems other engineers built on top of. I'm looking for a role with real ownership of hard technical problems. No CS degree, I am self taught and learn by practical application of the science.",
+  "social": [
+    { "label": "LinkedIn", "href": "https://www.linkedin.com/in/williammhuynh/" },
+    { "label": "GitHub", "href": "https://github.com/williammh" },
+    { "label": "Email", "href": "mailto:whuynh23@gmail.com" },
+    { "label": "Resume", "href": "./full-stack-william-huynh.pdf", "external": true }
+  ],
+  "projects": [
+    {
+      "id": "livetape",
+      "title": "LiveTape.ai",
+      "href": "https://livetape.ai",
+      "image": "./livetape.png",
+      "alt": "LiveTape.ai agent panel with a live tick chart",
+      "caption": "An agent evaluating a Bollinger rule and executing live against BTCUSD.",
+      "description": "Agents that trade without requiring users to read or write code. They understand position, multiple markets and timeframes, remember and track arbitrary user-defined variables, and perform user-defined calculations on those values.",
+      "links": [
+        { "label": "Read technical writeup", "href": "./livetape-technical-specs.pdf" },
+        {
+          "label": "Code sample",
+          "href": "https://gist.github.com/williammh/a1ccdc038f186247220c070aee1ed974"
+        }
+      ],
+      "tech": [
+        "Python",
+        "FastAPI",
+        "asyncio",
+        "NumPy",
+        "Postgres",
+        "Redis",
+        "React",
+        "TypeScript",
+        "Zod",
+        "Docker",
+        "OCI ARM64",
+        "Cloudflare"
+      ]
+    },
+    {
+      "id": "my-hand-history",
+      "title": "My Hand History",
+      "href": "https://myhandhistory.com",
+      "image": "./my-hand-history.png",
+      "alt": "My Hand History replaying a poker hand with preflop action, board, and a GTO analysis panel",
+      "caption": "Replaying a hand action by action, with hero's call graded against a Nash push/fold chart.",
+      "description": "Upload a poker hand history, replay it visually, and see where hero deviated from GTO. Parses seven room formats into one hand model, replays every action street by street, and grades hero's decisions against preflop charts and postflop pot-odds heuristics — each verdict tagged with its confidence rather than guessed at. Parsing and storage happen entirely in the browser: no accounts, no upload, hands never leave the device.",
+      "links": [],
+      "tech": ["TypeScript", "Next.js", "React", "IndexedDB", "Vitest"]
+    },
+    {
+      "id": "graphclone",
+      "title": "Graphclone",
+      "href": "https://github.com/williammh/graphclone",
+      "image": "./graphclone.png",
+      "alt": "A job-detail page wireframe reconstructed by Graphclone from a live crawl",
+      "caption": "A page template reconstructed by Graphclone from a live crawl, exported to PDF.",
+      "description": "A site-architecture mapper for consulting scope. An async Playwright crawler traverses a target site, canonicalizes dynamic routes into a structural map, and feeds that into a wireframe builder that outputs reviewable layouts and a PRD. Supports authenticated crawls via a manual login handoff, so gated content is reachable without ever handling a client's credentials. I use it to scope and anchor every engagement I take.",
+      "links": [],
+      "tech": ["Python", "Playwright", "asyncio", "Next.js", "TypeScript"]
+    }
+  ],
+  "contact": {
+    "headshot": "./headshot.png",
+    "headshotAlt": "William Huynh Headshot",
+    "items": [
+      { "label": "Email", "value": "whuynh23@gmail.com", "href": "mailto:whuynh23@gmail.com" },
+      {
+        "label": "LinkedIn",
+        "value": "williammhuynh",
+        "href": "https://www.linkedin.com/in/williammhuynh/"
+      },
+      { "label": "GitHub", "value": "williammh", "href": "https://github.com/williammh" },
+      {
+        "label": "Resume",
+        "value": "full-stack-william-huynh.pdf",
+        "href": "./full-stack-william-huynh.pdf"
+      }
+    ]
+  }
+}
