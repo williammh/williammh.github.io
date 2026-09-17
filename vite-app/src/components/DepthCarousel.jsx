@@ -35,6 +35,7 @@ const DepthCarousel = ({
   loop = true,
   showControls = true,
   showIndicators = true,
+  fitHeight = false,
   onChange,
   renderItem,
   className = ''
@@ -75,7 +76,9 @@ const DepthCarousel = ({
     ease,
     loop,
     cardWidth,
-    autoplayDelay
+    autoplayDelay,
+    fitHeight,
+    cardHeight
   };
 
   const layout = useCallback(pos => {
@@ -180,9 +183,18 @@ const DepthCarousel = ({
     if (!root) return;
     const ro = new ResizeObserver(entries => {
       const w = entries[0].contentRect.width;
+      const h = entries[0].contentRect.height;
       const cfg = cfgRef.current;
       const needed = cfg.cardWidth + Math.abs(cfg.spread) * 2 + 120;
-      scaleRef.current = clamp(w / needed, 0.4, 1);
+      let sc = clamp(w / needed, 0.4, 1);
+      // In fit mode the stage fills the remaining viewport height, so the
+      // card also scales down to it rather than overflowing (and being
+      // clipped) on short screens. The floor stays very low here because this
+      // scale is exactly the stage's own height ratio — anything above
+      // h / cardHeight pins the card taller than its stage. The width floor
+      // remains 0.4; a narrow-but-tall viewport still keeps a readable card.
+      if (cfg.fitHeight && h > 0) sc = Math.min(sc, clamp(h / cfg.cardHeight, 0.2, 1));
+      scaleRef.current = sc;
       // Exposed so a container can size itself to the card's actual
       // rendered height instead of guessing at cardHeight * 1 — the
       // card shrinks with width, but a CSS height set in pixels or svh
@@ -348,7 +360,7 @@ const DepthCarousel = ({
   return (
     <div
       ref={rootRef}
-      className={`depth-carousel ${className}`.trim()}
+      className={`depth-carousel ${className}${fitHeight ? ' depth-carousel--fit' : ''}`.trim()}
       style={{ '--dc-perspective': `${perspective}px` }}
       role="group"
       aria-roledescription="carousel"

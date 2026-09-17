@@ -85,7 +85,7 @@
 }
 
 .dark {
-  --background: oklch(0.153 0.006 107.1);
+  --background: oklch(0.188 0.007 107.2);
   --foreground: oklch(0.988 0.003 106.5);
   --card: oklch(0.228 0.013 107.4);
   --card-foreground: oklch(0.988 0.003 106.5);
@@ -166,7 +166,6 @@
    of it rather than floating over the tech badges, and themed for the light
    page surface instead of the component's dark-image default. */
 .portfolio-carousel .depth-carousel__dots {
-  bottom: -24px;
   background: transparent;
   backdrop-filter: none;
   padding: 0;
@@ -219,6 +218,18 @@
    below), so clipping the root itself would cut them off too. */
 .portfolio-carousel .depth-carousel__stage {
   overflow: clip;
+}
+
+/* In fitHeight mode the stage fills the height the portfolio section leaves
+   below the header, so the root must size to that block rather than to its
+   own (taller) content. Absolute positioning ties it to the wrapper's used
+   size, which the flexed section establishes — a percentage height here
+   doesn't resolve because flex main sizes are treated as indefinite. */
+.portfolio-carousel.depth-carousel--fit {
+  position: absolute;
+  inset: 0;
+  height: auto;
+  min-height: 0;
 }
 
 html {

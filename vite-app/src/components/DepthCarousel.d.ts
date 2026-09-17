@@ -27,6 +27,8 @@ declare module "@/components/DepthCarousel" {
     loop?: boolean
     showControls?: boolean
     showIndicators?: boolean
+    /** Scale the focused card down to the stage's height as well as width. */
+    fitHeight?: boolean
     onChange?: (index: number, item: T) => void
     /** Renders the full contents of each card, replacing the default <img>. */
     renderItem?: (item: T, index: number) => ReactNode

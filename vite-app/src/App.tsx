@@ -59,31 +59,34 @@ type CarouselGeometry = {
 }
 
 const CAROUSEL_BREAKPOINTS: CarouselGeometry[] = [
-  // denominator 800 + 440 + 120 = 1360, so scale ≈ 1056/1360 ≈ 0.78 against
-  // the 1056px column — the focused card gives up some size for a fan wide
-  // enough that receding cards clearly separate from it.
+  // denominator 800 + 310 + 120 = 1230, so scale ≈ 1056/1230 ≈ 0.86 against
+  // the 1056px column. Depth does the fan's separation: at perspective 1200 a
+  // d=1 neighbour renders at 1200/1630 ≈ 0.74 its on-screen height (d=2 ≈
+  // 0.58), so receding cards read as smaller and further back rather than
+  // fanning out at near-full height. Spread stays big enough that each
+  // neighbour's far edge still peeks ~60px past the focused card.
   {
     min: 1024,
     cardWidth: 800,
     cardHeight: 860,
-    spread: 220,
-    depth: 280,
+    spread: 155,
+    depth: 430,
     visibleCards: 4,
   },
   {
     min: 768,
     cardWidth: 600,
     cardHeight: 840,
-    spread: 160,
-    depth: 220,
+    spread: 135,
+    depth: 360,
     visibleCards: 3,
   },
   {
     min: 480,
     cardWidth: 420,
     cardHeight: 800,
-    spread: 110,
-    depth: 165,
+    spread: 95,
+    depth: 265,
     visibleCards: 3,
   },
   // Phones: a modest fan rather than none, so neighbours still peek out from
@@ -93,8 +96,8 @@ const CAROUSEL_BREAKPOINTS: CarouselGeometry[] = [
     min: 0,
     cardWidth: 560,
     cardHeight: 1180,
-    spread: 60,
-    depth: 125,
+    spread: 45,
+    depth: 200,
     visibleCards: 2,
   },
 ]
@@ -190,6 +193,9 @@ function ProjectSlide({ item }: { item: Project }) {
 
 export function App() {
   const geometry = useCarouselGeometry()
+  // The carousel only flexes to fill the page's remaining height on desktop,
+  // where the fan is staged against a hard viewport-height target.
+  const fitDesktop = geometry.min >= 1024
 
   return (
     <div className="mx-auto flex min-h-svh max-w-6xl flex-col gap-12 px-6 py-16 sm:px-8 lg:px-12">
@@ -250,7 +256,10 @@ export function App() {
 
       <Separator />
 
-      <section aria-labelledby="portfolio-heading">
+      <section
+        aria-labelledby="portfolio-heading"
+        className={fitDesktop ? "flex min-h-0 flex-1 flex-col" : undefined}
+      >
         <h2
           id="portfolio-heading"
           className="text-xs font-medium tracking-[0.15em] text-muted-foreground uppercase"
@@ -258,12 +267,13 @@ export function App() {
           Portfolio
         </h2>
 
-        <div className="relative mt-8 mb-10">
+        <div className={fitDesktop ? "relative mt-8 min-h-0 flex-1" : "relative mt-8 mb-10"}>
           <DepthCarousel
             items={content.projects}
             className="portfolio-carousel"
             depth={geometry.depth}
             spread={geometry.spread}
+            fitHeight={fitDesktop}
             tilt={0}
             tiltDirection="right"
             perspective={1200}
