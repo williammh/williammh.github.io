@@ -128,7 +128,7 @@ export function App() {
           ))}
         </div>
 
-        <p className="mt-8 max-w-[62ch] leading-[1.75] text-pretty">
+        <p className="mt-8 leading-[1.75] text-pretty">
           {content.summary}
         </p>
       </header>
