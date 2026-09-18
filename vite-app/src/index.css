@@ -220,18 +220,6 @@
   overflow: clip;
 }
 
-/* In fitHeight mode the stage fills the height the portfolio section leaves
-   below the header, so the root must size to that block rather than to its
-   own (taller) content. Absolute positioning ties it to the wrapper's used
-   size, which the flexed section establishes — a percentage height here
-   doesn't resolve because flex main sizes are treated as indefinite. */
-.portfolio-carousel.depth-carousel--fit {
-  position: absolute;
-  inset: 0;
-  height: auto;
-  min-height: 0;
-}
-
 html {
   overflow-x: hidden;
 }

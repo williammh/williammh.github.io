@@ -5,9 +5,10 @@
      the ResizeObserver in DepthCarousel.jsx), not a guess at cardHeight * 1
      — otherwise a narrower viewport shrinks the card but not the stage,
      leaving dead space above and below it. Falls back to cardHeight before
-     the observer has run once, and is still capped so a very tall card
-     can't push the stage past the viewport. */
-  height: min(var(--dc-card-scaled-height, 100%), 78svh);
+     the observer has run once. No cap: the focused card is the column's full
+     width at every breakpoint, so on a short viewport it runs past the fold
+     and the page scrolls naturally. */
+  height: var(--dc-card-scaled-height, 100%);
   min-height: 320px;
   display: flex;
   align-items: center;

@@ -185,8 +185,16 @@ const DepthCarousel = ({
       const w = entries[0].contentRect.width;
       const h = entries[0].contentRect.height;
       const cfg = cfgRef.current;
-      const needed = cfg.cardWidth + Math.abs(cfg.spread) * 2 + 120;
-      let sc = clamp(w / needed, 0.4, 1);
+      // The focused card fills the stage's full width: `cardWidth` is set to
+      // the hosting column's width (see App.tsx), so the scale is the
+      // container over the card rather than over the whole fan. Receding
+      // cards fan out past the column and the stage clips them (the portfolio
+      // stage sets overflow: clip), so the fan no longer needs to fit inside
+      // it. The old denominator — cardWidth + spread*2 + 120 — fitted the
+      // whole fan, which is what shrank the focused card to roughly
+      // two-thirds of the column. The cap only stops a cardWidth smaller than
+      // its container from blowing the card up past 115%.
+      let sc = clamp(w / cfg.cardWidth, 0.4, 1.15);
       // In fit mode the stage fills the remaining viewport height, so the
       // card also scales down to it rather than overflowing (and being
       // clipped) on short screens. The floor stays very low here because this

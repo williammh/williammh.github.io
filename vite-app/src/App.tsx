@@ -37,19 +37,16 @@ const SOCIAL_ICON: Record<string, ReactNode> = {
 }
 
 /**
- * The carousel's geometry is in pixels and the component scales it to fit:
- * `scale = containerWidth / (cardWidth + |spread| * 2 + 120)`, clamped to
- * [0.4, 1] (see the ResizeObserver in DepthCarousel.jsx). That denominator is
- * what actually sets the focused card's rendered size, so a wide `spread` costs
- * card width — at spread 360 the denominator is 1720 and an 1056px container
- * renders the 880px card at just 540px, leaving the slide's copy cramped inside
- * a mostly empty page.
+ * The focused card fills the column's full width — the same measure as the
+ * summary above it. `cardWidth` holds the widest the column gets at each
+ * breakpoint, and the component's ResizeObserver scales the card to
+ * `containerWidth / cardWidth` (see DepthCarousel.jsx), so the slide renders
+ * at exactly the column's current width at every viewport.
  *
- * `spread` is kept below `cardWidth` so the focused card still reads at close
- * to full size, but wide enough that the receding cards visibly fan out
- * rather than hide directly behind it. The carousel stage clips overflow
- * (index.css), so a receding card is free to spill past the content column —
- * only the focused card's own size has to stay controlled. Phones get a small
+ * `spread` and `depth` only shape how far the receding cards fan out and how
+ * quickly they shrink; they no longer cost the focused card any width. The
+ * stage clips overflow (index.css), so a receding card is free to spill past
+ * the content column without causing a sideways scroll. Phones get a small
  * spread rather than none, since 0 collapses the stack into a flat single
  * image with no depth cue at all.
  */
@@ -63,15 +60,17 @@ type CarouselGeometry = {
 }
 
 const CAROUSEL_BREAKPOINTS: CarouselGeometry[] = [
-  // denominator 800 + 400 + 120 = 1320, so scale ≈ 1056/1320 ≈ 0.80 against
-  // the 1056px column. Depth does the fan's separation: at perspective 1200 a
-  // d=1 neighbour renders at 1200/1750 ≈ 0.69 its on-screen height (d=2 ≈
-  // 0.51), so receding cards read as smaller and further back rather than
-  // fanning out at near-full height. Spread stays big enough that each
-  // neighbour's far edge still peeks well past the focused card.
+  // 1056 is the column at max-w-6xl with lg padding (1152 − 96 of horizontal
+  // gutter); below that within this tier the scale simply follows the column
+  // down, always rendering the card at full width. Depth does the fan's
+  // separation: at perspective 2400 a d=1 neighbour renders at 2400/2950 ≈
+  // 0.81 its on-screen height (d=2 ≈ 0.68), so receding cards read as smaller
+  // and further back rather than fanning out at near-full height. Spread stays
+  // big enough that each neighbour's far edge still peeks well past the
+  // focused card.
   {
     min: 1024,
-    cardWidth: 800,
+    cardWidth: 1056,
     cardHeight: 860,
     spread: 200,
     depth: 550,
@@ -79,7 +78,7 @@ const CAROUSEL_BREAKPOINTS: CarouselGeometry[] = [
   },
   {
     min: 768,
-    cardWidth: 600,
+    cardWidth: 960,
     cardHeight: 840,
     spread: 175,
     depth: 460,
@@ -87,18 +86,20 @@ const CAROUSEL_BREAKPOINTS: CarouselGeometry[] = [
   },
   {
     min: 480,
-    cardWidth: 420,
+    cardWidth: 720,
     cardHeight: 800,
     spread: 125,
     depth: 340,
     visibleCards: 3,
   },
-  // Phones: a modest fan rather than none, so neighbours still peek out from
-  // behind the focused card. The stage clips overflow, so this only affects
-  // the focused card's own scale, not whether anything spills the column.
+  // Narrow phones keep the focused card at the column's full width too
+  // (cardWidth 440 exceeds any <480 column, so the scale lands below its cap).
+  // The stage clips overflow, so this only affects the focused card's own
+  // size, not whether anything spills the column. The modest spread keeps a
+  // fan so neighbours still peek out from behind the focused card.
   {
     min: 0,
-    cardWidth: 560,
+    cardWidth: 440,
     // Was 1180: the article's content (title, image, caption, description,
     // links, badges) only needs ~630px at this width — the article fills
     // whatever cardHeight it's given without growing to match, so the extra
@@ -106,7 +107,7 @@ const CAROUSEL_BREAKPOINTS: CarouselGeometry[] = [
     cardHeight: 660,
     spread: 60,
     depth: 260,
-    visibleCards: 2,
+    visibleCards: 3,
   },
 ]
 
@@ -165,7 +166,7 @@ function ProjectSlide({ item }: { item: Project }) {
         </figcaption>
       </figure>
 
-      <p className="portfolio-carousel__copy w-full max-w-[72ch] shrink-0 self-stretch text-[length:var(--slide-body)] leading-[1.7] text-pretty">
+      <p className="portfolio-carousel__copy w-full shrink-0 self-stretch text-[length:var(--slide-body)] leading-[1.7] text-pretty">
         {item.description}
       </p>
 
@@ -201,9 +202,6 @@ function ProjectSlide({ item }: { item: Project }) {
 
 export function App() {
   const geometry = useCarouselGeometry()
-  // The carousel only flexes to fill the page's remaining height on desktop,
-  // where the fan is staged against a hard viewport-height target.
-  const fitDesktop = geometry.min >= 1024
 
   return (
     <div className="mx-auto flex min-h-svh max-w-6xl flex-col gap-12 px-6 py-16 sm:px-8 lg:px-12">
@@ -264,10 +262,7 @@ export function App() {
 
       <Separator />
 
-      <section
-        aria-labelledby="portfolio-heading"
-        className={fitDesktop ? "flex min-h-0 flex-1 flex-col" : undefined}
-      >
+      <section aria-labelledby="portfolio-heading">
         <h2
           id="portfolio-heading"
           className="text-xs font-medium tracking-[0.15em] text-muted-foreground uppercase"
@@ -275,23 +270,18 @@ export function App() {
           Portfolio
         </h2>
 
-        <div
-          className={
-            fitDesktop ? "relative mt-8 min-h-0 flex-1" : "relative mt-8 mb-10"
-          }
-        >
+        <div className="relative mt-8 mb-10">
           <DepthCarousel
             items={content.projects}
             className="portfolio-carousel"
             depth={geometry.depth}
             spread={geometry.spread}
-            fitHeight={fitDesktop}
             tilt={0}
             tiltDirection="right"
             perspective={2400}
             visibleCards={geometry.visibleCards}
-            falloff={0.4}
-            blur={13}
+            falloff={0.18}
+            blur={5}
             autoplay={false}
             loop
             cardWidth={geometry.cardWidth}
