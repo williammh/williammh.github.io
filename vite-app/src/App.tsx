@@ -68,10 +68,15 @@ const CAROUSEL_BREAKPOINTS: CarouselGeometry[] = [
   // and further back rather than fanning out at near-full height. Spread stays
   // big enough that each neighbour's far edge still peeks well past the
   // focused card.
+  //
+  // cardHeight is tuned to the tallest slide's content at this width (~679px
+  // of title/img/caption/description/badges) plus the article's pb-14, so
+  // nothing clips and the dots sit ~17px below the badges instead of hundreds
+  // of pixels down a fixed-height card.
   {
     min: 1024,
     cardWidth: 1056,
-    cardHeight: 860,
+    cardHeight: 740,
     spread: 200,
     depth: 550,
     visibleCards: 4,
@@ -79,7 +84,7 @@ const CAROUSEL_BREAKPOINTS: CarouselGeometry[] = [
   {
     min: 768,
     cardWidth: 960,
-    cardHeight: 840,
+    cardHeight: 720,
     spread: 175,
     depth: 460,
     visibleCards: 3,
@@ -87,7 +92,7 @@ const CAROUSEL_BREAKPOINTS: CarouselGeometry[] = [
   {
     min: 480,
     cardWidth: 720,
-    cardHeight: 800,
+    cardHeight: 750,
     spread: 125,
     depth: 340,
     visibleCards: 3,
@@ -100,11 +105,13 @@ const CAROUSEL_BREAKPOINTS: CarouselGeometry[] = [
   {
     min: 0,
     cardWidth: 440,
-    // Was 1180: the article's content (title, image, caption, description,
-    // links, badges) only needs ~630px at this width — the article fills
-    // whatever cardHeight it's given without growing to match, so the extra
-    // ~550px just sat as dead space between the badges and the dots below.
-    cardHeight: 660,
+    // Was 660 — too small for the tallest phone slide: Graphclone's
+    // near-square screenshot (capped at 420px) plus its long description needs
+    // ~787px, and the 660px card let flexbox crush the image/caption down onto
+    // the description. The ~850px height fits all three slides; the slide's
+    // own description flex-grow absorbs the difference for shorter slides, so
+    // the badges stay pinned near the bottom and the dots never drift.
+    cardHeight: 850,
     spread: 60,
     depth: 260,
     visibleCards: 3,
@@ -140,7 +147,7 @@ type Project = (typeof content.projects)[number]
  */
 function ProjectSlide({ item }: { item: Project }) {
   return (
-    <article className="flex h-full w-full flex-col items-stretch gap-3.5 overflow-hidden sm:gap-4">
+    <article className="flex h-full w-full flex-col items-stretch gap-3.5 overflow-hidden pb-14 sm:gap-4">
       <a
         href={item.href}
         target="_blank"
@@ -154,19 +161,19 @@ function ProjectSlide({ item }: { item: Project }) {
         />
       </a>
 
-      <figure className="portfolio-carousel__shot m-0 flex min-h-0 w-full flex-col">
+      <figure className="portfolio-carousel__shot m-0 flex w-full shrink-0 flex-col">
         <img
           src={item.image}
           alt={item.alt}
           draggable={false}
           className="block max-h-[min(52svh,420px)] w-full object-contain"
         />
-        <figcaption className="portfolio-carousel__copy w-full shrink-0 pt-3 text-center text-[0.8125rem] leading-relaxed text-pretty text-muted-foreground sm:text-sm">
+        <figcaption className="portfolio-carousel__copy w-full shrink-0 pt-3 text-center text-[0.8125rem] leading-relaxed text-pretty sm:text-sm">
           {item.caption}
         </figcaption>
       </figure>
 
-      <p className="portfolio-carousel__copy w-full shrink-0 self-stretch text-[length:var(--slide-body)] leading-[1.7] text-pretty">
+      <p className="portfolio-carousel__copy w-full grow self-stretch text-[length:var(--slide-body)] leading-[1.7] text-pretty">
         {item.description}
       </p>
 
@@ -274,13 +281,13 @@ export function App() {
           <DepthCarousel
             items={content.projects}
             className="portfolio-carousel"
-            depth={geometry.depth}
+            depth={geometry.depth *.6}
             spread={geometry.spread}
             tilt={0}
             tiltDirection="right"
             perspective={2400}
-            visibleCards={geometry.visibleCards}
-            falloff={0.18}
+            visibleCards={geometry.visibleCards * 2}
+            falloff={0.48}
             blur={5}
             autoplay={false}
             loop
