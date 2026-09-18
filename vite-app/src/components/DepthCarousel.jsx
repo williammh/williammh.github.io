@@ -98,20 +98,27 @@ const DepthCarousel = ({
         if (d > n / 2) d -= n;
       }
 
-      const back = Math.max(0, d);
       const az = Math.abs(d);
       const shown = az <= cfg.visibleCards + 0.5;
 
-      const tz = -cfg.depth * d;
+      // Both neighbours recede symmetrically by absolute distance (`az`),
+      // not signed `d`. The old code used signed `d` for tz/tx, so the
+      // "previous" neighbour (d=-1) swung forward toward the viewer instead
+      // of back like the "next" one (d=+1) — and was then faded to opacity 0
+      // to hide that forward pop-in. With only 3 looped items that neighbour
+      // is always exactly one of the two cards flanking the active one, so
+      // it vanished outright, leaving only 2 of 3 slides ever visible. Using
+      // `az` for depth/spread makes both sides recede and shrink the same
+      // way (mirrored left/right), so neither needs to fade out.
+      const tz = -cfg.depth * az;
       const tx = dir * cfg.spread * d;
-      const ry = dir * cfg.tilt * clamp(d, 0, 1);
+      const ry = dir * cfg.tilt * clamp(d, -1, 1);
 
-      let opacity = d < 0 ? Math.max(0, 1 + d) : 1;
-      if (!shown) opacity = 0;
+      const opacity = shown ? 1 : 0;
 
-      const brightness = Math.max(0.15, 1 - back * cfg.falloff);
-      const blurPx = cfg.blur > 0 ? Math.min(cfg.blur, (back / Math.max(1, cfg.visibleCards)) * cfg.blur) : 0;
-      const zi = Math.round(2000 - d * 20);
+      const brightness = Math.max(0.15, 1 - az * cfg.falloff);
+      const blurPx = cfg.blur > 0 ? Math.min(cfg.blur, (az / Math.max(1, cfg.visibleCards)) * cfg.blur) : 0;
+      const zi = Math.round(2000 - az * 20);
 
       el.style.transform = `translate(-50%, -50%) scale(${sc}) translateX(${tx.toFixed(2)}px) translateZ(${tz.toFixed(2)}px) rotateY(${ry.toFixed(3)}deg)`;
       el.style.opacity = opacity.toFixed(3);
@@ -120,7 +127,7 @@ const DepthCarousel = ({
       el.style.pointerEvents = shown && opacity > 0.05 ? 'auto' : 'none';
 
       const ov = overlayRefs.current[i];
-      if (ov) ov.style.opacity = clamp(back * cfg.falloff * 1.25, 0, 0.86).toFixed(3);
+      if (ov) ov.style.opacity = clamp(az * cfg.falloff * 1.25, 0, 0.86).toFixed(3);
     }
   }, []);
 
