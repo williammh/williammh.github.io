@@ -18,15 +18,12 @@ import { Separator } from "@/components/ui/separator"
 import content from "@/content.json"
 
 // Every mark is 16px so it optically matches the 14px link text beside it;
-// the previous 20px made the contact row read bottom-heavy.
+// the previous 20px made the contact row read bottom-heavy. All icons are
+// pinned white (not theme-flipping muted-foreground), so GitHub's mark
+// needs a fixed dark chip behind it to stay visible on the light page.
 const SOCIAL_ICON: Record<string, ReactNode> = {
-  // Note: this mark is a white-only fill (transparent everywhere else), so
-  // it renders invisible against the light-mode page background — visible
-  // only in dark mode. Requested as a plain glyph with no background chip.
   LinkedIn: <img src={linkedinLogo} alt="" className="size-4 shrink-0" />,
   GitHub: (
-    // The source mark is a white-only fill, so it needs a fixed dark chip
-    // (not a theme-flipping one) to stay visible in both light and dark.
     <span className="inline-flex size-4 shrink-0 items-center justify-center rounded-xs bg-[#161b22] p-px">
       <img src={githubLogo} alt="" className="size-full" />
     </span>
@@ -263,18 +260,19 @@ export function App() {
         </div>
 
         {/* The summary runs the page's full width. */}
-        <p className="w-full text-[0.9375rem] leading-[1.7] text-pretty sm:leading-[1.75]">
+        <p className="w-full text-[0.9375rem] leading-[1.7] text-pretty text-muted-foreground sm:leading-[1.75]">
           {content.summary}
         </p>
 
-        {/* Contact links read as a labelled row of destinations, so each one
-            shows its destination's name rather than a raw address or filename.
-            Targets are 44px tall on touch via the negative-margin trick, which
-            keeps the visual rhythm of the row while meeting the tap minimum. */}
+        {/* Icon-only row: labels made this read busy next to the QR glyph,
+            and these marks (mail/LinkedIn/GitHub/PDF/QR) are conventional
+            enough to stand alone. Targets are 44px tall on touch via the
+            negative-margin trick, which keeps the visual rhythm of the row
+            while meeting the tap minimum. */}
         <nav
           id="contact"
           aria-label="Contact"
-          className="-my-2 flex flex-wrap items-center gap-x-5 gap-y-0 sm:gap-x-6"
+          className="-my-2 -mx-1 flex flex-wrap items-center gap-x-0.5"
         >
           {content.contact.items.map((item) => (
             <a
@@ -283,10 +281,9 @@ export function App() {
               target={item.href.startsWith("mailto:") ? undefined : "_blank"}
               rel="noreferrer"
               aria-label={`${item.label}: ${item.value}`}
-              className="group flex min-h-11 items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+              className="flex min-h-11 min-w-11 items-center justify-center text-muted-foreground transition-colors hover:text-foreground"
             >
               {SOCIAL_ICON[item.label]}
-              <span className="group-hover:underline">{item.label}</span>
             </a>
           ))}
 
@@ -296,7 +293,7 @@ export function App() {
                 <button
                   type="button"
                   aria-label="Show QR code for this page"
-                  className="group flex min-h-11 items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                  className="flex min-h-11 min-w-11 items-center justify-center text-muted-foreground transition-colors hover:text-foreground"
                 />
               }
             >
@@ -304,7 +301,6 @@ export function App() {
                 className="size-4 shrink-0 text-white"
                 aria-hidden="true"
               />
-              <span className="group-hover:underline">QR Code</span>
             </Dialog.Trigger>
             <Dialog.Portal>
               <Dialog.Backdrop className="fixed inset-0 z-[4000] bg-black/60 transition-opacity duration-150 data-[ending-style]:opacity-0 data-[starting-style]:opacity-0" />
