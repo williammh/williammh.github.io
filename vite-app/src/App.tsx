@@ -1,8 +1,11 @@
 import { useEffect, useState, type ReactNode } from "react"
+import { Dialog } from "@base-ui/react/dialog"
 import {
   ArrowUpRightIcon,
   EnvelopeIcon,
   FilePdfIcon,
+  QrCodeIcon,
+  XIcon,
 } from "@phosphor-icons/react"
 
 import githubLogo from "@/assets/github-logo.svg"
@@ -286,6 +289,55 @@ export function App() {
               <span className="group-hover:underline">{item.label}</span>
             </a>
           ))}
+
+          <Dialog.Root>
+            <Dialog.Trigger
+              render={
+                <button
+                  type="button"
+                  aria-label="Show QR code for this page"
+                  className="group flex min-h-11 items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                />
+              }
+            >
+              <QrCodeIcon
+                className="size-4 shrink-0 text-white"
+                aria-hidden="true"
+              />
+              <span className="group-hover:underline">QR Code</span>
+            </Dialog.Trigger>
+            <Dialog.Portal>
+              <Dialog.Backdrop className="fixed inset-0 z-[4000] bg-black/60 transition-opacity duration-150 data-[ending-style]:opacity-0 data-[starting-style]:opacity-0" />
+              <Dialog.Popup
+                // Leaves the top ~11.5rem of the viewport clear so the
+                // header (avatar, h1, title) stays visible behind the
+                // dialog at every screen width, per the request. z-[4000]
+                // clears the carousel's arrows/dots (DepthCarousel.css,
+                // z-index: 3000) so the dialog covers them too.
+                className="fixed inset-x-0 top-[11.5rem] bottom-0 z-[4000] flex flex-col items-center gap-4 bg-background p-6 pt-8 outline-none transition-all duration-150 data-[ending-style]:opacity-0 data-[starting-style]:opacity-0"
+              >
+                <Dialog.Close
+                  render={
+                    <button
+                      type="button"
+                      aria-label="Close"
+                      className="absolute top-4 right-4 flex size-9 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+                    />
+                  }
+                >
+                  <XIcon className="size-5" aria-hidden="true" />
+                </Dialog.Close>
+                <img
+                  src="./qr-code.svg"
+                  alt="QR code for williammh.github.io"
+                  className="min-h-0 flex-1 w-full max-w-[min(90vw,32rem)] object-contain"
+                />
+                <Dialog.Title className="font-heading text-sm tracking-[0.02em] text-muted-foreground">
+                  williammh.github.io
+                </Dialog.Title>
+              </Dialog.Popup>
+            </Dialog.Portal>
+          </Dialog.Root>
         </nav>
       </header>
 
