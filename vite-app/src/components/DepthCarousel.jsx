@@ -47,6 +47,7 @@ const DepthCarousel = ({
   const stageRef = useRef(null);
   const cardRefs = useRef([]);
   const overlayRefs = useRef([]);
+  const dotsRef = useRef(null);
 
   const posRef = useRef(0);
   const focusRef = useRef(0);
@@ -185,6 +186,54 @@ const DepthCarousel = ({
 
   const navigateBy = useCallback(step => setFocus(focusRef.current + step, true), [setFocus]);
 
+  // Dots sit at a single fixed height, set by whichever slide's content
+  // reaches lowest — not the focused slide's own content. All cards are
+  // always in the DOM (that's what makes the depth fan work), so every
+  // card's content bottom can be measured up front and the deepest one
+  // wins; the dots then stay there regardless of which slide is focused.
+  // Anchoring to the focused card's own content instead made the dots hop
+  // up and down as slides changed, which read as broken rather than
+  // content-aware.
+  const offsetDots = useCallback(() => {
+    const dots = dotsRef.current;
+    const root = rootRef.current;
+    if (!dots || !root) return;
+    const rootRect = root.getBoundingClientRect();
+    let lowest = null;
+    for (const card of cardRefs.current) {
+      const content = card?.querySelector('article, .depth-carousel__img');
+      if (!content) continue;
+      const last = content.lastElementChild ?? content;
+      const bottom = last.getBoundingClientRect().bottom;
+      if (lowest === null || bottom > lowest) lowest = bottom;
+    }
+    if (lowest === null) {
+      dots.style.removeProperty('--dc-dots-bottom');
+      return;
+    }
+    const dotsHeight = dots.getBoundingClientRect().height || 7;
+    const gap = 24;
+    // `bottom` is measured from the root's own bottom edge upward, so
+    // clearing the deepest content's bottom edge (plus a gap) means
+    // subtracting both the distance from root-bottom down to that edge AND
+    // the dots' own height (a `bottom` offset positions the dots' bottom
+    // edge, not its top).
+    const bottom = rootRect.bottom - lowest - gap - dotsHeight;
+    dots.style.setProperty('--dc-dots-bottom', `${bottom}px`);
+
+    // cardHeight is sized for the tallest possible slide at this breakpoint
+    // (see App.tsx), so the box is routinely taller than every actual card,
+    // leaving dead space below the dots before the box's own bottom edge —
+    // and the page layout reserves that whole box. Pulling the leftover
+    // (bottom, which is already negative once the dots clear the box) back
+    // up as a negative margin trims the box to end just past the dots
+    // without touching the box's own height or the card's vertical
+    // centering inside it.
+    const trailingMargin = 8;
+    const collapse = Math.max(bottom - trailingMargin, 0);
+    root.style.setProperty('--dc-trailing-collapse', `-${collapse}px`);
+  }, []);
+
   useEffect(() => {
     const root = rootRef.current;
     if (!root) return;
@@ -216,10 +265,11 @@ const DepthCarousel = ({
       // wouldn't know that and would leave dead space above/below it.
       root.style.setProperty('--dc-card-scaled-height', `${cardHeight * scaleRef.current}px`);
       layout(posRef.current);
+      offsetDots();
     });
     ro.observe(root);
     return () => ro.disconnect();
-  }, [layout, cardHeight]);
+  }, [layout, cardHeight, offsetDots]);
 
   useEffect(() => {
     const el = rootRef.current;
@@ -453,7 +503,7 @@ const DepthCarousel = ({
       )}
 
       {showIndicators && count > 1 && (
-        <div className="depth-carousel__dots" role="tablist" aria-label="Slides">
+        <div className="depth-carousel__dots" ref={dotsRef} role="tablist" aria-label="Slides">
           {data.map((_, i) => (
             <button
               key={i}

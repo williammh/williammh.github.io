@@ -119,19 +119,40 @@ const CAROUSEL_BREAKPOINTS: CarouselGeometry[] = [
   },
 ]
 
+function pickGeometry(w: number) {
+  return CAROUSEL_BREAKPOINTS.find((b) => w >= b.min) ?? CAROUSEL_BREAKPOINTS[0]
+}
+
 function useCarouselGeometry() {
-  const [geometry, setGeometry] = useState(CAROUSEL_BREAKPOINTS[0])
+  const [geometry, setGeometry] = useState(() =>
+    pickGeometry(typeof window === "undefined" ? 0 : window.innerWidth)
+  )
 
   useEffect(() => {
+    // Only the breakpoint tier matters, not the exact width, so most resize
+    // events (dragging the window, mobile chrome show/hide) should never
+    // reach setState — each call re-renders App and re-triggers the
+    // carousel's ResizeObserver/GSAP layout pass. requestAnimationFrame
+    // coalesces bursts of resize events to at most one check per frame, and
+    // the tier comparison below skips the setState entirely when the width
+    // moved within the same breakpoint.
+    let frame = 0
     const read = () => {
-      const w = window.innerWidth
-      setGeometry(
-        CAROUSEL_BREAKPOINTS.find((b) => w >= b.min) ?? CAROUSEL_BREAKPOINTS[0]
-      )
+      frame = 0
+      setGeometry((prev) => {
+        const next = pickGeometry(window.innerWidth)
+        return next === prev ? prev : next
+      })
     }
-    read()
-    window.addEventListener("resize", read)
-    return () => window.removeEventListener("resize", read)
+    const onResize = () => {
+      if (frame) return
+      frame = requestAnimationFrame(read)
+    }
+    window.addEventListener("resize", onResize)
+    return () => {
+      window.removeEventListener("resize", onResize)
+      if (frame) cancelAnimationFrame(frame)
+    }
   }, [])
 
   return geometry

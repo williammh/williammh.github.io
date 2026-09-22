@@ -10,6 +10,14 @@
      and the page scrolls naturally. */
   height: var(--dc-card-scaled-height, 100%);
   min-height: 320px;
+  /* cardHeight (and so this box) is sized for the tallest slide at each
+     breakpoint, so shorter slides leave dead space below the dots before
+     the box's own bottom edge. --dc-trailing-collapse (set from the actual
+     measured content, see offsetDots in DepthCarousel.jsx) pulls that
+     unused space back out of the page's flow via a negative bottom margin,
+     without touching the box's own height or the card's centering inside
+     it. */
+  margin-bottom: var(--dc-trailing-collapse, 0px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -117,7 +125,7 @@
 
 .depth-carousel__dots {
   position: absolute;
-  bottom: 16px;
+  bottom: var(--dc-dots-bottom, 16px);
   left: 50%;
   transform: translateX(-50%);
   z-index: 3000;

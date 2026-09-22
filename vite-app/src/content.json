@@ -57,7 +57,7 @@
       "image": "./graphclone.png",
       "alt": "A job-detail page wireframe reconstructed by Graphclone from a live crawl",
       "caption": "A page template reconstructed by Graphclone from a live crawl, exported to PDF.",
-      "description": "A site-architecture mapper for consulting scope. An async Playwright crawler traverses a target site, canonicalizes dynamic routes into a structural map, and feeds that into a wireframe builder that outputs reviewable layouts and a PRD. Supports authenticated crawls via a manual login handoff, so gated content is reachable without ever handling a client's credentials.",
+      "description": "A site-architecture mapper for consulting scope. An async Playwright crawler traverses a target site, canonicalizes dynamic routes into a structural map, and feeds that into a wireframe builder that outputs reviewable layouts and a PRD. Supports authenticated crawls.",
       "links": [],
       "tech": ["Python", "Playwright", "asyncio", "Next.js", "TypeScript"]
     }
