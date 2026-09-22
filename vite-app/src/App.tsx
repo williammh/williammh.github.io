@@ -72,7 +72,8 @@ const CAROUSEL_BREAKPOINTS: CarouselGeometry[] = [
   // cardHeight is tuned to the tallest slide's content at this width (~679px
   // of title/img/caption/description/badges) plus the article's pb-14, so
   // nothing clips and the dots sit ~17px below the badges instead of hundreds
-  // of pixels down a fixed-height card.
+  // of pixels down a fixed-height card. Shorter slides simply leave empty
+  // space below their badges.
   {
     min: 1024,
     cardWidth: 1056,
@@ -108,9 +109,9 @@ const CAROUSEL_BREAKPOINTS: CarouselGeometry[] = [
     // Was 660 — too small for the tallest phone slide: Graphclone's
     // near-square screenshot (capped at 420px) plus its long description needs
     // ~787px, and the 660px card let flexbox crush the image/caption down onto
-    // the description. The ~850px height fits all three slides; the slide's
-    // own description flex-grow absorbs the difference for shorter slides, so
-    // the badges stay pinned near the bottom and the dots never drift.
+    // the description. The ~850px height fits all three slides; the buttons
+    // and badges flow right after the description with the card's gap, and
+    // the dots never drift.
     cardHeight: 850,
     spread: 60,
     depth: 260,
@@ -173,7 +174,7 @@ function ProjectSlide({ item }: { item: Project }) {
         </figcaption>
       </figure>
 
-      <p className="portfolio-carousel__copy w-full grow self-stretch text-[length:var(--slide-body)] leading-[1.7] text-pretty">
+      <p className="portfolio-carousel__copy w-full text-[length:var(--slide-body)] leading-[1.7] text-pretty">
         {item.description}
       </p>
 
