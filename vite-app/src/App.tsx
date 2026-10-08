@@ -325,11 +325,11 @@ export function App() {
                 </Dialog.Close>
                 <img
                   src="./qr-code.svg"
-                  alt="QR code for williammh.github.io"
+                  alt="QR code for wllmmh.github.io"
                   className="min-h-0 flex-1 w-full max-w-[min(90vw,32rem)] object-contain"
                 />
                 <Dialog.Title className="font-heading text-sm tracking-[0.02em] text-muted-foreground">
-                  williammh.github.io
+                  wllmmh.github.io
                 </Dialog.Title>
               </Dialog.Popup>
             </Dialog.Portal>
